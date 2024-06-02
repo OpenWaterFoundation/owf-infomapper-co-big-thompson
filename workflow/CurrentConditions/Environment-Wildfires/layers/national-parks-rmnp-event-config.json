@@ -1,0 +1,12 @@
+{
+  "id" : "national-parks-rmnp-event-config",
+  "name": "Hover and click event handlers active wildfire perimeters",
+  "description":  "Display only important user-understandable attributes.",
+  "layerAttributes" : {
+    "include" : [ "PARKNAME", "UNIT_NAME", "UNIT_TYPE" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

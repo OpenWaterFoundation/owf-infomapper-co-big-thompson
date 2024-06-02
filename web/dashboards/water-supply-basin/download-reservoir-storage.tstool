@@ -1,0 +1,72 @@
+StartLog(LogFile="results/download-reservoir.tstool.log")
+# This command file downloads reservoir time series for dashboard information products.
+# See the following web service documentation:
+#   https://opencdss.state.co.us/tstool/latest/doc-user/datastore-ref/NRCS-AWDB/NRCS-AWDB/
+#
+SetProperty(PropertyName="HUC",PropertyType="String",PropertyValue="10190007")
+#
+# Set the period to read:
+# - used for statictics that require historical data
+# - Horsetooth Reservoir filled in 1056 but data start in 1957
+# - end out output is yesterday because reservoir data are not available for the current day
+SetOutputPeriod(OutputEnd="CurrentToDay - 1Day")
+# SetInputPeriod(InputStart="1950-05-01",InputEnd="CurrentToDay")
+SetInputPeriod(InputStart="1957-01-01",InputEnd="CurrentToDay - 1Day")
+#
+# Read the reservoir data from Natural Resources Conservation Service (NRCS) web services:
+# - this seems to be the main reliable source for such data
+# - the data include historical through the current day
+# - remove a bad value for Horsetooth Reservoir
+# - fill missing my interpolating since reservoir storage changes relatively slowly
+ReadNrcsAwdb(DataStore="NrcsAwdb",Interval="Day",Stations="06016030,06016050,06016070,06016090,06016120,06016140,06016150,06016310",States="CO",Networks="BOR",Elements="RESC",Alias="%L-RESC-Day")
+ReplaceValue(TSList="AllMatchingTSID",TSID="CO-06016150-RESC-Day",MinValue="400000",MaxValue="4000000",Action="SetMissing",SetFlag="X")
+FillInterpolate(MaxIntervals="90",FillFlag="I")
+#
+# Create a time series containing the sum of all the storage:
+# - this is used to calcuate the percent of median storage later
+# - the start date reflects the overlapping historical period from all the input time series
+NewTimeSeries(Alias="${HUC}-Storage-Day",NewTSID="${HUC}..Storage.Day",Description="${HUC} storage volume",SetStart="${InputStart}",SetEnd="${InputEnd}",Units="ac_ft",MissingValue="NaN")
+Add(TSID="${HUC}-Storage-Day",AddTSList="AllMatchingTSID",AddTSID="*RESC-Day",HandleMissingHow="IgnoreMissing")
+#
+# Compute the percent of mean and median for daily storage, using the full period:
+#
+# Mean calculations.
+RunningStatisticTimeSeries(TSList="AllMatchingTSID",TSID="10190007-Storage-Day",Statistic="Mean",SampleMethod="AllYears",Alias="10190007-Storage-Mean-Day")
+RunningStatisticTimeSeries(TSList="AllMatchingTSID",TSID="10190007-Storage-Day",Statistic="PercentOfMean",SampleMethod="AllYears",Alias="10190007-Storage-PercentOfMean-Day")
+#
+# Median calculations.
+RunningStatisticTimeSeries(TSList="AllMatchingTSID",TSID="10190007-Storage-Day",Statistic="Median",SampleMethod="AllYears",Alias="10190007-Storage-Median-Day")
+RunningStatisticTimeSeries(TSList="AllMatchingTSID",TSID="10190007-Storage-Day",Statistic="PercentOfMedian",SampleMethod="AllYears",Alias="10190007-Storage-PercentOfMedian-Day")
+# Reset the description to short version that does not include manipulation text.
+SetTimeSeriesProperty(TSList="AllMatchingTSID",TSID="10190007-Storage-Day",Description="${HUC} Storage")
+SetTimeSeriesProperty(TSList="AllMatchingTSID",TSID="10190007-Storage-Mean-Day",Description="${HUC} Storage")
+SetTimeSeriesProperty(TSList="AllMatchingTSID",TSID="10190007-Storage-PercentOfMean-Day",Description="${HUC} Storage")
+SetTimeSeriesProperty(TSList="AllMatchingTSID",TSID="10190007-Storage-Median-Day",Description="${HUC} Storage")
+SetTimeSeriesProperty(TSList="AllMatchingTSID",TSID="10190007-Storage-PercentOfMedian-Day",Description="${HUC} Storage")
+#
+# Process the graph product:
+# - currently the candidate is only for the Poudre so the candidate and final templates are the same
+# - if the workflow is scaled to more basins the template can be updated to use ${Property}
+ProcessTSProduct(TSProductFile="reservoir-storage-graph-template.tsp",OutputFile="results/reservoir-storage.png",VisibleStart="2021-01-01",VisibleEnd="2022-05-13",OutputProductFile="results/reservoir-storage-graph-template-candidate.json")
+# Don't copy once manually edited.
+# CopyFile(InputFile="results/reservoir-storage-graph-template-candidate.json",OutputFile="results/reservoir-storage-graph-template.json")
+#
+# Create a table for the percent of median:
+# - include separate columns for each indicator station
+# - add a column that is the minimum of "percent of median" to be used by the dashboard indicator
+NewTable(TableID="ReservoirStorage_PercentOfMedian",Columns="Date,datetime;PercentOfMedian,double")
+TimeSeriesToTable(TSList="AllMatchingTSID",TSID="*PercentOfMedian*",TableID="ReservoirStorage_PercentOfMedian",DateTimeColumn="Date",ValueColumn="ReservoirStorage_PercentOfMedian")
+#
+# Output the time series for use in online graphs:
+# - write as separate time series files
+# - output the percent of median as csv to use in an indicator
+# - output a few years to provide context but not the full historical period used to compute statistics
+SetOutputPeriod(OutputStart="2010-01-01",OutputEnd="CurrentToDay - 1Day")
+WriteTableToDelimitedFile(TableID="ReservoirStorage_PercentOfMedian",OutputFile="results/${HUC}-reservoir-storage-indicator.csv")
+WriteDateValue(TSList="AllMatchingTSID",TSID="CO-06016030-RESC-Day",OutputFile="results/06016030-ReservoirStorage-Day.dv",Precision="2",WriteDataFlags="False")
+WriteDateValue(TSList="AllMatchingTSID",TSID="CO-06016050-RESC-Day",OutputFile="results/06016050-ReservoirStorage-Day.dv",Precision="2",WriteDataFlags="False")
+WriteDateValue(TSList="AllMatchingTSID",TSID="CO-06016070-RESC-Day",OutputFile="results/06016070-ReservoirStorage-Day.dv",Precision="2",WriteDataFlags="False")
+WriteDateValue(TSList="AllMatchingTSID",TSID="CO-06016090-RESC-Day",OutputFile="results/06016090-ReservoirStorage-Day.dv",Precision="2",WriteDataFlags="False")
+WriteDateValue(TSList="AllMatchingTSID",TSID="CO-06016120-RESC-Day",OutputFile="results/06016120-ReservoirStorage-Day.dv",Precision="2",WriteDataFlags="False")
+WriteDateValue(TSList="AllMatchingTSID",TSID="CO-06016150-RESC-Day",OutputFile="results/06016150-ReservoirStorage-Day.dv",Precision="2",WriteDataFlags="False")
+WriteDateValue(TSList="AllMatchingTSID",TSID="CO-06016310-RESC-Day",OutputFile="results/06016310-ReservoirStorage-Day.dv",Precision="2",WriteDataFlags="False")

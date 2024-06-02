@@ -1,0 +1,4 @@
+# layers #
+
+This folder contains dynamically-created layer files and classification files.
+See the main repository `.gitignore` file.

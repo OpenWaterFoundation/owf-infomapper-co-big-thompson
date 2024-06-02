@@ -1,0 +1,12 @@
+{
+  "id" : "co-state-house-districts-event-config",
+  "name": "House districts event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "District_N" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

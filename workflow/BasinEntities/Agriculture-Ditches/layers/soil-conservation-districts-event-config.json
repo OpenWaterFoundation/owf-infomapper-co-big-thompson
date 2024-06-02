@@ -1,0 +1,12 @@
+{
+  "id" : "soil-conservation-districts-event-config",
+  "name": "Soil conservation districts event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "abbrev_nam", "mail_addre", "mail_city", "mail_state", "mail_zip", "url", "lastupdate" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

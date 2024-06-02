@@ -1,0 +1,12 @@
+{
+  "id" : "co-dwr-water-districts-division1-event-config",
+  "name": "CO DWR water districts event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "OfficeName", "Division", "URL" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

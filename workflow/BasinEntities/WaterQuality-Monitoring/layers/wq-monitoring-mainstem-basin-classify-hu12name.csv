@@ -1,0 +1,6 @@
+# Category classification table for water monitoring basin
+# - the value corresponds to HU_12_NAME attribute
+# - the label uses HU_12_NAME values, currently hard-coded here because simple
+# - 3333cc - mid-blue
+value,color,opacity,fillColor,fillOpacity,weight,label
+Mainstem Cache La Poudre,#3333cc,1.0,#3333cc,0.3,3,"Mainstem Cache La Poudre"

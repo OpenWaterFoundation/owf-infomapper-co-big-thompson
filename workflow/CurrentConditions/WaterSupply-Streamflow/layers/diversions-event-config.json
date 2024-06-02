@@ -1,0 +1,12 @@
+{
+  "id" : "diversions-event-config",
+  "name": "Diversions event configuration",
+  "description":  "List main attributes and provide buttons to graph time series.",
+  "layerAttributes" : {
+    "include" : [ "stationName", "abbrev", "wdid", "structureType", "dataSourceAbbrev", "waterSource", "moreInformation" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

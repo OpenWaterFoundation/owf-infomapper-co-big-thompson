@@ -1,0 +1,12 @@
+{
+  "id" : "education-orgs-event-config",
+  "name": "Education organizations event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "Organization", "OrganizationType", "Description", "Website", "InBasin" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

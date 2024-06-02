@@ -1,0 +1,22 @@
+{
+  "metadata": {
+     "author": "Steve Malers",
+     "title": "Demonstration Dashboard",
+     "version": "1.0.0"
+  },
+  "layout": {
+     "columns": 5,
+     "backgroundColor": "black",
+     "gutterSize": 5
+  },
+  "widgets": [
+     {
+       "columns": 1,
+       "rows": 1,
+       "type": "statusIndicator",
+       "name": "Reservoir Storage",
+       "title": "Reservoir Storage",
+       "description": "Storage as percent of historical median."
+     }
+  ]
+}

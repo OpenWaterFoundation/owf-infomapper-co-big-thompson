@@ -1,0 +1,12 @@
+{
+  "id" : "ditch-service-areas-1976-event-config",
+  "name": "Ditch service areas (1976) event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "DITCH_NAME", "WDID", "ACREAGE", "COMMENT" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

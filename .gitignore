@@ -1,0 +1,434 @@
+# Ignore files in repository working files
+
+# Ignore "junk" and other files often used for work
+junk
+
+# Ignore compiled Python files, in case Python scripts are used.
+*.py[cod]
+
+# Ignore Python stack dump files when a crash occurs
+*.stackdump
+
+# Ignore log files
+*.log
+
+# Ignore temporary HTML files
+*.tmp.html
+
+# vim editor files
+
+*.swp
+*.swo
+
+# Microsoft temporary files
+*.tmp
+~$*
+
+# Ignore file extension used as temporary for .bat, etc. so email attachment works
+*.xxx
+
+# Ignore working files, in particular dynamically-created files created for InfoMapper.
+# Putting these items here avoids the need for many separate .gitignore files,
+# but need to pay attention to naming conventions so that dynamic files do not slip in.
+#
+# For 'web' folder, ignore dynamically-created files:
+# - all other content such as documentation and images is version-controlled
+/web/data-maps/*
+!/web/data-maps/README.md
+/web/data-ts/*
+!/web/data-ts/README.md
+
+# ======================================================
+# Dashboards menu:
+# - for now files are kept in place in web/dashboards
+#   rather than putting in workflow/ folder and copying to web/...
+# - later may treat similar to /workflow files
+# ======================================================
+
+/web/dashboards/water-affordability/downloads/*
+!/web/dashboards/water-affordability/downloads/README.md
+/web/dashboards/water-affordability/results/*
+!/web/dashboards/water-affordability/results/README.md
+
+/web/dashboards/water-supply-basin/downloads/*
+!/web/dashboards/water-supply-basin/downloads/README.md
+/web/dashboards/water-supply-basin/results/*
+!/web/dashboards/water-supply-basin/results/README.md
+
+/web/dashboards/water-supply-providers/downloads/*
+!/web/dashboards/water-supply-providers/downloads/README.md
+/web/dashboards/water-supply-providers/results/*
+!/web/dashboards/water-supply-providers/results/README.md
+
+# ======================================================
+# Supporting Data menu
+# ======================================================
+
+# SupportingData/Political-ColoradoStateBoundary
+/workflow/SupportingData/Political-ColoradoStateBoundary/downloads/*
+!/workflow/SupportingData/Political-ColoradoStateBoundary/downloads/README.md
+/workflow/SupportingData/Political-ColoradoStateBoundary/layers/*
+!/workflow/SupportingData/Political-ColoradoStateBoundary/layers/README.md
+!/workflow/SupportingData/Political-ColoradoStateBoundary/layers/*.csv
+!/workflow/SupportingData/Political-ColoradoStateBoundary/layers/*.json
+!/workflow/SupportingData/Political-ColoradoStateBoundary/layers/*.md
+!/workflow/SupportingData/Political-ColoradoStateBoundary/layers/*doc
+
+# SupportingData/Physical-ContinentalDivide
+/workflow/SupportingData/Physical-ContinentalDivide/downloads/*
+!/workflow/SupportingData/Physical-ContinentalDivide/downloads/README.md
+/workflow/SupportingData/Physical-ContinentalDivide/layers/*
+!/workflow/SupportingData/Physical-ContinentalDivide/layers/README.md
+!/workflow/SupportingData/Physical-ContinentalDivide/layers/*.csv
+!/workflow/SupportingData/Physical-ContinentalDivide/layers/*.json
+!/workflow/SupportingData/Physical-ContinentalDivide/layers/*.md
+!/workflow/SupportingData/Physical-ContinentalDivide/layers/*doc
+
+# ======================================================
+# Basin Entities menu
+# ======================================================
+
+# BasinEntities/Administration-CoDwrWaterDistricts
+/workflow/BasinEntities/Administration-CoDwrWaterDistricts/downloads/*
+!/workflow/BasinEntities/Administration-CoDwrWaterDistricts/downloads/README.md
+/workflow/BasinEntities/Administration-CoDwrWaterDistricts/layers/*
+!/workflow/BasinEntities/Administration-CoDwrWaterDistricts/layers/README.md
+!/workflow/BasinEntities/Administration-CoDwrWaterDistricts/layers/*.csv
+!/workflow/BasinEntities/Administration-CoDwrWaterDistricts/layers/*.json
+!/workflow/BasinEntities/Administration-CoDwrWaterDistricts/layers/*.md
+!/workflow/BasinEntities/Administration-CoDwrWaterDistricts/layers/*doc
+# Dynamic map configurations
+#/workflow/BasinEntities/Administration-CoDwrWaterDistricts/*.json
+
+# BasinEntities/Administration-Roundtables
+/workflow/BasinEntities/Administration-Roundtables/downloads/*
+!/workflow/BasinEntities/Administration-Roundtables/downloads/README.md
+/workflow/BasinEntities/Administration-Roundtables/layers/*
+!/workflow/BasinEntities/Administration-Roundtables/layers/README.md
+!/workflow/BasinEntities/Administration-Roundtables/layers/*.csv
+!/workflow/BasinEntities/Administration-Roundtables/layers/*.json
+!/workflow/BasinEntities/Administration-Roundtables/layers/*.md
+!/workflow/BasinEntities/Administration-Roundtables/layers/*doc
+# Dynamic map configurations
+#/workflow/BasinEntities/Administration-Roundtables/*.json
+
+# TODO smalers 2021-04-21 Leave this in for now but has been renamed to Agriculture-FoodAndDairies so remove ASAP
+# BasinEntities/Agriculture-Dairies
+/workflow/BasinEntities/Agriculture-Dairies/downloads/*
+!/workflow/BasinEntities/Agriculture-Dairies/downloads/README.md
+/workflow/BasinEntities/Agriculture-Dairies/layers/*
+!/workflow/BasinEntities/Agriculture-Dairies/layers/README.md
+!/workflow/BasinEntities/Agriculture-Dairies/layers/*.csv
+!/workflow/BasinEntities/Agriculture-Dairies/layers/*.json
+!/workflow/BasinEntities/Agriculture-Dairies/layers/*.md
+!/workflow/BasinEntities/Agriculture-Dairies/layers/*doc
+# Dynamic map configurations
+#/workflow/BasinEntities/Agriculture-Dairies/*.json
+
+# BasinEntities/Agriculture-Ditches
+/workflow/BasinEntities/Agriculture-Ditches/downloads/*
+!/workflow/BasinEntities/Agriculture-Ditches/downloads/README.md
+/workflow/BasinEntities/Agriculture-Ditches/layers/*
+!/workflow/BasinEntities/Agriculture-Ditches/layers/README.md
+!/workflow/BasinEntities/Agriculture-Ditches/layers/*.csv
+!/workflow/BasinEntities/Agriculture-Ditches/layers/*.json
+!/workflow/BasinEntities/Agriculture-Ditches/layers/*.md
+!/workflow/BasinEntities/Agriculture-Ditches/layers/*doc
+# Dynamic map configurations
+#/workflow/BasinEntities/Agriculture-Ditches/*.json
+#
+# BasinEntities/Agriculture-FoodAndDairies
+/workflow/BasinEntities/Agriculture-FoodAndDairies/downloads/*
+!/workflow/BasinEntities/Agriculture-FoodAndDairies/downloads/README.md
+/workflow/BasinEntities/Agriculture-FoodAndDairies/layers/*
+!/workflow/BasinEntities/Agriculture-FoodAndDairies/layers/README.md
+!/workflow/BasinEntities/Agriculture-FoodAndDairies/layers/*.csv
+!/workflow/BasinEntities/Agriculture-FoodAndDairies/layers/*.json
+!/workflow/BasinEntities/Agriculture-FoodAndDairies/layers/*.md
+!/workflow/BasinEntities/Agriculture-FoodAndDairies/layers/*doc
+# Dynamic map configurations
+#/workflow/BasinEntities/Agriculture-FoodAndDairies/*.json
+
+# BasinEntities/Education-Organizations
+/workflow/BasinEntities/Education-Organizations/downloads/*
+!/workflow/BasinEntities/Education-Organizations/downloads/README.md
+/workflow/BasinEntities/Education-Organizations/layers/*
+!/workflow/BasinEntities/Education-Organizations/layers/README.md
+!/workflow/BasinEntities/Education-Organizations/layers/*.csv
+!/workflow/BasinEntities/Education-Organizations/layers/*.json
+!/workflow/BasinEntities/Education-Organizations/layers/*.md
+!/workflow/BasinEntities/Education-Organizations/layers/*doc
+# Dynamic map configurations
+#/workflow/BasinEntities/Education-Organizations/*.json
+
+# BasinEntities/Environment-InstreamFlowReaches
+/workflow/BasinEntities/Environment-InstreamFlowReaches/downloads/*
+!/workflow/BasinEntities/Environment-InstreamFlowReaches/downloads/README.md
+/workflow/BasinEntities/Environment-InstreamFlowReaches/layers/*
+!/workflow/BasinEntities/Environment-InstreamFlowReaches/layers/README.md
+!/workflow/BasinEntities/Environment-InstreamFlowReaches/layers/*.csv
+!/workflow/BasinEntities/Environment-InstreamFlowReaches/layers/*.json
+!/workflow/BasinEntities/Environment-InstreamFlowReaches/layers/*.md
+!/workflow/BasinEntities/Environment-InstreamFlowReaches/layers/*doc
+# Dynamic map configurations
+#/workflow/BasinEntities/Environment-InstreamFlowReaches/*.json
+
+# BasinEntities/Environment-Organizations
+/workflow/BasinEntities/Environment-Organizations/downloads/*
+!/workflow/BasinEntities/Environment-Organizations/downloads/README.md
+/workflow/BasinEntities/Environment-Organizations/layers/*
+!/workflow/BasinEntities/Environment-Organizations/layers/README.md
+!/workflow/BasinEntities/Environment-Organizations/layers/*.csv
+!/workflow/BasinEntities/Environment-Organizations/layers/*.json
+!/workflow/BasinEntities/Environment-Organizations/layers/*.md
+!/workflow/BasinEntities/Environment-Organizations/layers/*doc
+# Dynamic map configurations
+#/workflow/BasinEntities/Environment-Organizations/*.json
+
+# BasinEntities/Industry-Breweries
+/workflow/BasinEntities/Industry-Breweries/downloads/*
+!/workflow/BasinEntities/Industry-Breweries/downloads/README.md
+/workflow/BasinEntities/Industry-Breweries/layers/*
+!/workflow/BasinEntities/Industry-Breweries/layers/README.md
+!/workflow/BasinEntities/Industry-Breweries/layers/*.csv
+!/workflow/BasinEntities/Industry-Breweries/layers/*.json
+!/workflow/BasinEntities/Industry-Breweries/layers/*.md
+!/workflow/BasinEntities/Industry-Breweries/layers/*doc
+# Dynamic map configurations
+#/workflow/BasinEntities/Industry-Breweries/*.json
+
+# BasinEntities/Municipal-Municipalities
+/workflow/BasinEntities/Municipal-Municipalities/downloads/*
+!/workflow/BasinEntities/Municipal-Municipalities/downloads/README.md
+/workflow/BasinEntities/Municipal-Municipalities/layers/*
+!/workflow/BasinEntities/Municipal-Municipalities/layers/README.md
+!/workflow/BasinEntities/Municipal-Municipalities/layers/*.csv
+!/workflow/BasinEntities/Municipal-Municipalities/layers/*.json
+!/workflow/BasinEntities/Municipal-Municipalities/layers/*.md
+!/workflow/BasinEntities/Municipal-Municipalities/layers/*doc
+# Dynamic map configurations
+#/workflow/BasinEntities/Municipal-Municipalities/*.json
+# ts/
+# - ignore generated time series files
+/workflow/BasinEntities/Municipal-Municipalities/ts/*
+!/workflow/BasinEntities/Municipal-Municipalities/ts/README.md
+# graphs/
+# - ignore images created for prototype
+/workflow/BasinEntities/Municipal-Municipalities/graphs/*.png
+
+# BasinEntities/Political-Counties/
+# Dynamic map configurations
+#/workflow/BasinEntities/Political-Counties/*.json
+# downloads/
+/workflow/BasinEntities/Political-Counties/downloads/*
+!/workflow/BasinEntities/Political-Counties/downloads/README.md
+# db/
+# - ignore generated database
+/workflow/BasinEntities/Political-Counties/db/*
+!/workflow/BasinEntities/Political-Counties/db/README.md
+# layers/
+# - csv are layer classification files
+# - md are Markdown filees to document layers
+/workflow/BasinEntities/Political-Counties/layers/*
+!/workflow/BasinEntities/Political-Counties/layers/README.md
+!/workflow/BasinEntities/Political-Counties/layers/*.csv
+!/workflow/BasinEntities/Political-Counties/layers/*.json
+!/workflow/BasinEntities/Political-Counties/layers/*.md
+!/workflow/BasinEntities/Political-Counties/layers/*doc
+# ts/
+# - ignore generated time series files
+/workflow/BasinEntities/Political-Counties/ts/*
+!/workflow/BasinEntities/Political-Counties/ts/README.md
+# graphs/
+# - ignore images created for prototype
+/workflow/BasinEntities/Political-Counties/graphs/*.png
+
+# BasinEntities/Political-LegislativeDistricts
+/workflow/BasinEntities/Political-LegislativeDistricts/downloads/*
+!/workflow/BasinEntities/Political-LegislativeDistricts/downloads/README.md
+/workflow/BasinEntities/Political-LegislativeDistricts/layers/*
+!/workflow/BasinEntities/Political-LegislativeDistricts/layers/README.md
+!/workflow/BasinEntities/Political-LegislativeDistricts/layers/*.csv
+!/workflow/BasinEntities/Political-LegislativeDistricts/layers/*.json
+!/workflow/BasinEntities/Political-LegislativeDistricts/layers/*.md
+!/workflow/BasinEntities/Political-LegislativeDistricts/layers/*doc
+# Dynamic map configurations
+#/workflow/BasinEntities/Political-LegislativeDistricts/*.json
+
+# BasinEntities/Physical-Basins
+/workflow/BasinEntities/Physical-Basins/downloads/*
+!/workflow/BasinEntities/Physical-Basins/downloads/README.md
+/workflow/BasinEntities/Physical-Basins/layers/*
+!/workflow/BasinEntities/Physical-Basins/layers/README.md
+!/workflow/BasinEntities/Physical-Basins/layers/*.csv
+!/workflow/BasinEntities/Physical-Basins/layers/*.json
+!/workflow/BasinEntities/Physical-Basins/layers/*.md
+!/workflow/BasinEntities/Physical-Basins/layers/*doc
+# Dynamic map configurations
+#/workflow/BasinEntities/Physical-Basins/*.json
+
+# BasinEntities/Physical-StreamReaches
+/workflow/BasinEntities/Physical-StreamReaches/downloads/*
+!/workflow/BasinEntities/Physical-StreamReaches/downloads/README.md
+/workflow/BasinEntities/Physical-StreamReaches/layers/*
+!/workflow/BasinEntities/Physical-StreamReaches/layers/README.md
+!/workflow/BasinEntities/Physical-StreamReaches/layers/*.csv
+!/workflow/BasinEntities/Physical-StreamReaches/layers/*.json
+!/workflow/BasinEntities/Physical-StreamReaches/layers/*.md
+!/workflow/BasinEntities/Physical-StreamReaches/layers/*doc
+# Dynamic map configurations
+#/workflow/BasinEntities/Physical-StreamReaches/*.json
+
+# BasinEntities/Recreation-BoatingOrganizations
+/workflow/BasinEntities/Recreation-BoatingOrganizations/downloads/*
+!/workflow/BasinEntities/Recreation-BoatingOrganizations/downloads/README.md
+/workflow/BasinEntities/Recreation-BoatingOrganizations/layers/*
+!/workflow/BasinEntities/Recreation-BoatingOrganizations/layers/README.md
+!/workflow/BasinEntities/Recreation-BoatingOrganizations/layers/*.csv
+!/workflow/BasinEntities/Recreation-BoatingOrganizations/layers/*.json
+!/workflow/BasinEntities/Recreation-BoatingOrganizations/layers/*.md
+!/workflow/BasinEntities/Recreation-BoatingOrganizations/layers/*doc
+# Dynamic map configurations
+#/workflow/BasinEntities/Recreation-BoatingOrganizations/*.json
+
+# BasinEntities/Recreation-Trails
+/workflow/BasinEntities/Recreation-Trails/downloads/*
+!/workflow/BasinEntities/Recreation-Trails/downloads/README.md
+/workflow/BasinEntities/Recreation-Trails/layers/*
+!/workflow/BasinEntities/Recreation-Trails/layers/README.md
+!/workflow/BasinEntities/Recreation-Trails/layers/*.csv
+!/workflow/BasinEntities/Recreation-Trails/layers/*.json
+!/workflow/BasinEntities/Recreation-Trails/layers/*.md
+!/workflow/BasinEntities/Recreation-Trails/layers/*doc
+# Dynamic map configurations
+#/workflow/BasinEntities/Recreation-Trails/*.json
+
+# BasinEntities/WaterQuality-Monitoring
+/workflow/BasinEntities/WaterQuality-Monitoring/downloads/*
+!/workflow/BasinEntities/WaterQuality-Monitoring/downloads/README.md
+/workflow/BasinEntities/WaterQuality-Monitoring/layers/*
+!/workflow/BasinEntities/WaterQuality-Monitoring/layers/README.md
+!/workflow/BasinEntities/WaterQuality-Monitoring/layers/*.csv
+!/workflow/BasinEntities/WaterQuality-Monitoring/layers/*.json
+!/workflow/BasinEntities/WaterQuality-Monitoring/layers/*.md
+!/workflow/BasinEntities/WaterQuality-Monitoring/layers/*doc
+# Dynamic map configurations
+#/workflow/BasinEntities/WaterQuality-Monitoring/*.json
+
+# BasinEntities/WaterSupply-WaterProviders
+/workflow/BasinEntities/WaterSupply-WaterProviders/downloads/*
+!/workflow/BasinEntities/WaterSupply-WaterProviders/downloads/README.md
+/workflow/BasinEntities/WaterSupply-WaterProviders/layers/*
+!/workflow/BasinEntities/WaterSupply-WaterProviders/layers/README.md
+!/workflow/BasinEntities/WaterSupply-WaterProviders/layers/*.csv
+!/workflow/BasinEntities/WaterSupply-WaterProviders/layers/*.json
+!/workflow/BasinEntities/WaterSupply-WaterProviders/layers/*.md
+!/workflow/BasinEntities/WaterSupply-WaterProviders/layers/*doc
+# Dynamic map configurations
+#/workflow/BasinEntities/WaterSupply-WaterProviders/*.json
+
+# ======================================================
+# Historical Data menu
+# ======================================================
+
+# HistoricalData/Agriculture-IrrigatedLands
+/workflow/HistoricalData/Agriculture-IrrigatedLands/downloads/*
+!/workflow/HistoricalData/Agriculture-IrrigatedLands/downloads/README.md
+/workflow/HistoricalData/Agriculture-IrrigatedLands/layers/*
+!/workflow/HistoricalData/Agriculture-IrrigatedLands/layers/README.md
+!/workflow/HistoricalData/Agriculture-IrrigatedLands/layers/*.csv
+!/workflow/HistoricalData/Agriculture-IrrigatedLands/layers/*.json
+!/workflow/HistoricalData/Agriculture-IrrigatedLands/layers/*.md
+!/workflow/HistoricalData/Agriculture-IrrigatedLands/layers/*doc
+# Dynamic map configurations
+#/workflow/HistoricalData/Agriculture-IrrigatedLands/*.json
+
+# ======================================================
+# Current Conditions menu
+# ======================================================
+
+# CurrentConditions/Environment-Floods
+/workflow/CurrentConditions/Environment-Floods/downloads/*
+!/workflow/CurrentConditions/Environment-Floods/downloads/README.md
+/workflow/CurrentConditions/Environment-Floods/layers/*
+!/workflow/CurrentConditions/Environment-Floods/layers/README.md
+!/workflow/CurrentConditions/Environment-Floods/layers/*.csv
+!/workflow/CurrentConditions/Environment-Floods/layers/*.json
+!/workflow/CurrentConditions/Environment-Floods/layers/*.md
+!/workflow/CurrentConditions/Environment-Floods/layers/*doc
+# Dynamic map configurations
+# - commit because such a fundamental file
+#/workflow/CurrentConditions/Environment-Floods/*.json
+
+# CurrentConditions/Environment-Wildfires
+/workflow/CurrentConditions/Environment-Wildfires/downloads/*
+!/workflow/CurrentConditions/Environment-Wildfires/downloads/README.md
+/workflow/CurrentConditions/Environment-Wildfires/layers/*
+!/workflow/CurrentConditions/Environment-Wildfires/layers/README.md
+!/workflow/CurrentConditions/Environment-Wildfires/layers/*.csv
+!/workflow/CurrentConditions/Environment-Wildfires/layers/*.json
+!/workflow/CurrentConditions/Environment-Wildfires/layers/*.md
+!/workflow/CurrentConditions/Environment-Wildfires/layers/*doc
+# Dynamic map configurations
+# - commit because such a fundamental file
+#/workflow/CurrentConditions/Environment-Wildfires/*.json
+
+# CurrentConditions/WaterSupply-Drought
+/workflow/CurrentConditions/WaterSupply-Drought/downloads/*
+!/workflow/CurrentConditions/WaterSupply-Drought/downloads/README.md
+/workflow/CurrentConditions/WaterSupply-Drought/layers/*
+!/workflow/CurrentConditions/WaterSupply-Drought/layers/README.md
+!/workflow/CurrentConditions/WaterSupply-Drought/layers/*.csv
+!/workflow/CurrentConditions/WaterSupply-Drought/layers/*.json
+!/workflow/CurrentConditions/WaterSupply-Drought/layers/*.md
+!/workflow/CurrentConditions/WaterSupply-Drought/layers/*doc
+# Dynamic map configurations
+#/workflow/CurrentConditions/WaterSupply-Drought/*.json
+
+# CurrentConditions/WaterSupply-Snowpack
+/workflow/CurrentConditions/WaterSupply-Snowpack/downloads/*
+!/workflow/CurrentConditions/WaterSupply-Snowpack/downloads/README.md
+/workflow/CurrentConditions/WaterSupply-Snowpack/layers/*
+!/workflow/CurrentConditions/WaterSupply-Snowpack/layers/README.md
+!/workflow/CurrentConditions/WaterSupply-Snowpack/layers/*.csv
+!/workflow/CurrentConditions/WaterSupply-Snowpack/layers/*.json
+!/workflow/CurrentConditions/WaterSupply-Snowpack/layers/*.md
+!/workflow/CurrentConditions/WaterSupply-Snowpack/layers/*doc
+# Dynamic map configurations
+#/workflow/CurrentConditions/WaterSupply-Snowpack/*.json
+
+# CurrentConditions/WaterSupply-Streamflow
+/workflow/CurrentConditions/WaterSupply-Streamflow/downloads/*
+!/workflow/CurrentConditions/WaterSupply-Streamflow/downloads/README.md
+/workflow/CurrentConditions/WaterSupply-Streamflow/layers/*
+!/workflow/CurrentConditions/WaterSupply-Streamflow/layers/README.md
+!/workflow/CurrentConditions/WaterSupply-Streamflow/layers/*.csv
+!/workflow/CurrentConditions/WaterSupply-Streamflow/layers/*.json
+!/workflow/CurrentConditions/WaterSupply-Streamflow/layers/*.md
+!/workflow/CurrentConditions/WaterSupply-Streamflow/layers/*doc
+# Dynamic map configurations
+#/workflow/CurrentConditions/WaterSupply-Streamflow/*.json
+
+# ======================================================
+# Seasonal Outlook menu
+# ======================================================
+
+# ======================================================
+# Future Planning menu
+# ======================================================
+
+# FuturePlanning/Municipal-MajorProjects
+/workflow/FuturePlanning/Municipal-MajorProjects/downloads/*
+!/workflow/FuturePlanning/Municipal-MajorProjects/downloads/README.md
+/workflow/FuturePlanning/Municipal-MajorProjects/layers/*
+!/workflow/FuturePlanning/Municipal-MajorProjects/layers/README.md
+!/workflow/FuturePlanning/Municipal-MajorProjects/layers/*.csv
+!/workflow/FuturePlanning/Municipal-MajorProjects/layers/*.json
+!/workflow/FuturePlanning/Municipal-MajorProjects/layers/*.md
+!/workflow/FuturePlanning/Municipal-MajorProjects/layers/*doc
+# Dynamic map configurations
+#/workflow/FuturePlanning/Municipal-MajorProjects/*.json
+
+# ======================================================
+# Resources menu
+# ======================================================

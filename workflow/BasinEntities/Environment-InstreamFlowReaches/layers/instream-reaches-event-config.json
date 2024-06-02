@@ -1,0 +1,11 @@
+{
+  "id" : "stream-reaches-event-config",
+  "name": "Instream reaches event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "Name", "ISF_Type", "Status", "ID", "Case_Numbe", "WDID", "Appropriat", "Miles", "Flow_Rate", "Status" ], "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

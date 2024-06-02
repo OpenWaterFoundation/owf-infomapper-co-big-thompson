@@ -1,0 +1,24 @@
+# Get streamgage locations from CDSS's REST web services.
+# https://dnrweb.state.co.us/DWR/DwrApiService/Help#Datasets&#TelemetryStationsController&#gettingstarted&#jsonxml
+# Use the Telemetry Stations Generator.
+WebGet(URI="https://dwr.state.co.us/Rest/GET/api/v2/telemetrystations/telemetrystation?includeThirdParty=true&format=csv&waterDistrict=4",LocalFile="downloads/active-streamgages.csv")
+#
+# Read in the CSV file.
+ReadTableFromDelimitedFile(TableID="streamgages-orig",InputFile="downloads/active-streamgages.csv",SkipLines="1-2",HeaderLines="3",TextColumns="gnisId,wdid,usgsStationId")
+#
+# Filter data by stationType="Stream Gage" to get a list of stream gages.
+CopyTable(TableID="streamgages-orig",NewTableID="streamgages",ColumnFilters="stationType:Stream Gage")
+#
+# Filter data by stationType="Diversion Structure" to get a list of ditches.
+CopyTable(TableID="streamgages-orig",NewTableID="diversions",ColumnFilters="stationType:Diversion Structure")
+#
+# Manually add in coordinates for Joe Wright Creek below Chambers Reservoir.
+# SetTableValues(TableID="streamgages",ColumnFilters="wdid:0301133",ColumnValues="latitude:40.6036,longitude:-105.8428")
+#
+# Remove "Data Provider" from USGS in dataSource column.
+# ManipulateTableString(TableID="streamgages",InputColumn1="dataSource",Operator="Remove",InputValue2=" (Data Provider)",OutputColumn="dataSource")
+#
+# Export table to GeoJSON format:
+# - exclude columns (properties) that are often missing or are not that useful
+WriteTableToGeoJSON(TableID="streamgages",OutputFile="layers/streamgages.geojson",LongitudeColumn="longitude",LatitudeColumn="latitude",ExcludeColumns="structureType,contrArea,drainArea,huc10,utmX,utmY,locationAccuracy,modified")
+WriteTableToGeoJSON(TableID="diversions",OutputFile="layers/diversions.geojson",LongitudeColumn="longitude",LatitudeColumn="latitude",ExcludeColumns="contrArea,drainArea,huc10,utmX,utmY,locationAccuracy,modified")

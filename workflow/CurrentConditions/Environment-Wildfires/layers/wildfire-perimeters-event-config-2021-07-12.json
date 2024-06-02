@@ -1,0 +1,13 @@
+{
+  "comment" : "This is the version that worked with layer prior to 2021-07-12, attributes are different for currently-available layer.",
+  "id" : "wildfire-perimeters-event-config",
+  "name": "Hover and click event handlers active wildfire perimeters",
+  "description":  "Display only important user-understandable attributes.",
+  "layerAttributes" : {
+    "include" : [ "IncidentName", "MapMethod", "Comments", "GISAcres", "Label", "CreateDate", "DateCurrent", "PolygonDateTime" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

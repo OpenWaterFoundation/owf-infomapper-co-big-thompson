@@ -1,0 +1,11 @@
+# Category classification table for HUC10 basins
+# - the value corresponds to HUC10 attribute
+# - the label uses HUC10 and Name values, currently hard-coded here because simple
+# - #ff6666 is rosey red
+value,color,opacity,fillColor,fillOpacity,weight,label
+1019000601,#ff6666,1.0,#ff6666,0.3,2,"1019000601, North Fork Big Thompson River"
+1019000602,#ff6666,1.0,#ff6666,0.3,2,"1019000602, Headwaters Big Thompson River"
+1019000603,#ff6666,1.0,#ff6666,0.3,2,"1019000603, Buckhorn Creek"
+1019000604,#ff6666,1.0,#ff6666,0.3,2,"1019000604, Headwaters Little Thompson River"
+1019000605,#ff6666,1.0,#ff6666,0.3,2,"1019000605, Dry Creek Little Thompson River"
+1019000606,#ff6666,1.0,#ff6666,0.3,2,"1019000606, Outlet Big Thompson River"

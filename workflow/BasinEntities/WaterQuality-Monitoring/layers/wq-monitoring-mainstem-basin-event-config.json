@@ -1,0 +1,12 @@
+{
+  "id" : "wq-monitoring-maistem-basin-event-config",
+  "name": "WQ monitoring main stem basin event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "HU_12_NAME", "area_acres" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

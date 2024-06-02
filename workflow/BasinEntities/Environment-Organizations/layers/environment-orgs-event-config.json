@@ -1,0 +1,12 @@
+{
+  "id" : "environment-orgs-event-config",
+  "name": "Environment organizations event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "Organization", "OrganizationType", "Description", "Website", "InBasin" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

@@ -1,0 +1,80 @@
+StartLog(LogFile="results/download-streamflow.tstool.log")
+# This command file downloads streamflow time series for dashboard information products.
+# See the following web service documentation:  https://dwr.state.co.us/rest/get/help
+#
+SetProperty(PropertyName="HUC",PropertyType="String",PropertyValue="10190007")
+SetOutputPeriod(OutputEnd="CurrentToDay")
+# Format the download dates based to conform to the web service format.
+# SetProperty(PropertyName="StartDate",PropertyType=DateTime,PropertyValue="2019-01-01")
+SetProperty(PropertyName="StartDate",PropertyType="DateTime",PropertyValue="2021-01-01")
+SetProperty(PropertyName="EndDate",PropertyType="DateTime",PropertyValue="CurrentToDay")
+# SetInputPeriod(InputStart="${StartDate}",InputEnd="CurrentToDay")
+SetInputPeriod(InputEnd="CurrentToDay")
+#
+# Read streamflow from CIM:
+# - only the most recent 15 minute value is available, not the full time series
+# WebGet(URI="https://data.colorado.gov/resource/4yw9-a5y6.csv?$query=SELECT *",LocalFile="downloads/CLAFTCCO-DISCHRG-15Minute.csv")
+WebGet(URI="https://data.colorado.gov/resource/4yw9-a5y6.csv?$query=SELECT * WHERE dwr_abbrev = 'CLAFTCCO' AND variable = 'DISCHRG'",LocalFile="downloads/CLAFTCCO-DISCHRG-15Minute.csv")
+#
+# Also read the streamflow data from web services:
+# - read daily and 15 minute telemetry station time series for recent values
+# - read daily historical data for historical calculation of median and mean
+# CLAFTCCO (0301200) - CACHE LA POUDRE AT CANYON MOUTH NEAR FORT COLLINS
+# abbrev:CLAFTCCO.DWR.DISCHRG.Day~HydroBaseWeb
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",DataType="DISCHRG",Interval="Day",Where1="StationAbbreviation;Matches;CLAFTCCO",Alias="CLAFTCCO-Telemetry-Streamflow-Day")
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",DataType="DISCHRG",Interval="Day",Where1="StationAbbreviation;Matches;CLAFORCO",Alias="CLAFORCO-Telemetry-Streamflow-Day")
+# ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",DataType="DISCHRG",Interval="15Min",Where1="StationAbbreviation;Matches;CLAFTCCO",Alias="CLAFTCCO-Telemetry-Streamflow-15Min")
+# Read the historical time series:
+# - set the recent data on top of the historical data to allow analysis
+# - reset the description to short version that does not include manipulation text
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="abbrev:CLAFTCCO..Streamflow-Avg.Day~HydroBaseWeb",Alias="CLAFTCCO-Streamflow-Day")
+SetFromTS(TSList="AllMatchingTSID",TSID="CLAFTCCO-Streamflow-Day",IndependentTSList="AllMatchingTSID",IndependentTSID="CLAFTCCO-Telemetry-Streamflow-Day",TransferHow="ByDateTime",HandleMissingHow="IgnoreMissing",SetFlag="T")
+SetTimeSeriesProperty(TSList="AllMatchingTSID",TSID="CLAFTCCO-Streamflow-Day",Description="${ts:surfacewaterstation.stationName}")
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="abbrev:CLAFORCO..Streamflow-Avg.Day~HydroBaseWeb",Alias="CLAFORCO-Streamflow-Day")
+SetFromTS(TSList="AllMatchingTSID",TSID="CLAFORCO-Streamflow-Day",IndependentTSList="AllMatchingTSID",IndependentTSID="CLAFORCO-Telemetry-Streamflow-Day",TransferHow="ByDateTime",HandleMissingHow="IgnoreMissing",SetFlag="T")
+SetTimeSeriesProperty(TSList="AllMatchingTSID",TSID="CLAFORCO-Streamflow-Day",Description="${ts:surfacewaterstation.stationName}")
+#
+# Compute the percent of mean and median flow for daily flow, using the full historical period:
+# - use median to minimize impact of large flood events that skew the historical mean
+# - TODO smalers 2022-05-15 may be should use a shorter normal period to recognize climate and other changes
+#
+# Mean calculations.
+RunningStatisticTimeSeries(TSList="AllMatchingTSID",TSID="CLAFTCCO-Streamflow-Day",Statistic="Mean",SampleMethod="AllYears",Alias="CLAFTCCO-Streamflow-Mean-Day")
+RunningStatisticTimeSeries(TSList="AllMatchingTSID",TSID="CLAFTCCO-Streamflow-Day",Statistic="PercentOfMean",SampleMethod="AllYears",Alias="CLAFTCCO-Streamflow-PercentOfMean-Day")
+RunningStatisticTimeSeries(TSList="AllMatchingTSID",TSID="CLAFORCO-Streamflow-Day",Statistic="Mean",SampleMethod="AllYears",Alias="CLAFORCO-Streamflow-Mean-Day")
+RunningStatisticTimeSeries(TSList="AllMatchingTSID",TSID="CLAFORCO-Streamflow-Day",Statistic="PercentOfMean",SampleMethod="AllYears",Alias="CLAFORCO-Streamflow-PercentOfMean-Day")
+#
+# Median calculations.
+RunningStatisticTimeSeries(TSList="AllMatchingTSID",TSID="CLAFTCCO-Streamflow-Day",Statistic="Median",SampleMethod="AllYears",Alias="CLAFTCCO-Streamflow-Median-Day")
+RunningStatisticTimeSeries(TSList="AllMatchingTSID",TSID="CLAFTCCO-Streamflow-Day",Statistic="PercentOfMedian",SampleMethod="AllYears",Alias="CLAFTCCO-Streamflow-PercentOfMedian-Day")
+RunningStatisticTimeSeries(TSList="AllMatchingTSID",TSID="CLAFORCO-Streamflow-Day",Statistic="Median",SampleMethod="AllYears",Alias="CLAFORCO-Streamflow-Median-Day")
+RunningStatisticTimeSeries(TSList="AllMatchingTSID",TSID="CLAFORCO-Streamflow-Day",Statistic="PercentOfMedian",SampleMethod="AllYears",Alias="CLAFORCO-Streamflow-PercentOfMedian-Day")
+# Reset the description to short version that does not include manipulation text.
+SetTimeSeriesProperty(TSList="AllMatchingTSID",TSID="CLAFTCCO-Streamflow-Median-Day",Description="CACHE LA POUDRE AT CANYON MOUTH NEAR FORT COLLINS")
+SetTimeSeriesProperty(TSList="AllMatchingTSID",TSID="CLAFTCCO-Streamflow-PercentOfMedian-Day",Description="CACHE LA POUDRE AT CANYON MOUTH NEAR FORT COLLINS")
+SetTimeSeriesProperty(TSList="AllMatchingTSID",TSID="CLAFORCO-Streamflow-Median-Day",Description="CACHE LA POUDRE AT FORT COLLINS")
+SetTimeSeriesProperty(TSList="AllMatchingTSID",TSID="CLAFORCO-Streamflow-PercentOfMedian-Day",Description="CACHE LA POUDRE AT FORT COLLINS")
+#
+# Process the graph product:
+# - currently the candidate is only for the Poudre so the candidate and final templates are the same
+# - if the workflow is scaled to more basins the template can be updated to use ${Property}
+ProcessTSProduct(TSProductFile="streamflow-graph-template.tsp",OutputFile="results/streamflow.png",VisibleStart="2021-01-01",VisibleEnd="2022-05-13",OutputProductFile="results/streamflow-graph-template-candidate.json")
+# Don't copy once manually edited.
+# CopyFile(InputFile="results/streamflow-graph-template-candidate.json",OutputFile="results/streamflow-graph-template.json")
+#
+# Create a table for the percent of median:
+# - include separate columns for each indicator station
+# - add a column that is the minimum of "percent of median" to be used by the dashboard indicator
+NewTable(TableID="Streamflow_PercentOfMedian",Columns="Date,datetime;CLAFTCCO,double;CLAFORCO,double;Minimum_PercentOfMedian,double")
+TimeSeriesToTable(TSList="AllMatchingTSID",TSID="*PercentOfMedian*",TableID="Streamflow_PercentOfMedian",DateTimeColumn="Date",ValueColumn="CLAFTCCO,CLAFORCO",OutputStart="${StartDate}",OutputEnd="${EndDate}")
+TableMath(TableID="Streamflow_PercentOfMedian",Input1="CLAFTCCO",Operator="Min",Input2="CLAFORCO",Output="Minimum_PercentOfMedian")
+#
+# Output the time series for use in online graphs:
+# - write as separate time series files
+# - output the percent of median as csv to use in an indicator
+SetOutputPeriod(OutputStart="${StartDate}",OutputEnd="CurrentToDay")
+WriteTableToDelimitedFile(TableID="Streamflow_PercentOfMedian",OutputFile="results/${HUC}-streamflow-indicator.csv")
+WriteDateValue(TSList="AllMatchingTSID",TSID="CLAFTCCO-Streamflow-Day",OutputFile="results/CLAFTCCO-Streamflow-Day.dv",Precision="2",WriteDataFlags="False",OutputStart="${StartDate}",OutputEnd="${EndDate}")
+WriteDateValue(TSList="AllMatchingTSID",TSID="CLAFORCO-Streamflow-Day",OutputFile="results/CLAFORCO-Streamflow-Day.dv",Precision="2",WriteDataFlags="False",OutputStart="${StartDate}",OutputEnd="${EndDate}")
+WriteDateValue(TSList="AllMatchingTSID",TSID="CLAFTCCO-Streamflow-Median-Day",OutputFile="results/CLAFTCCO-Streamflow-Median-Day.dv",Precision="2",WriteDataFlags="False",OutputStart="${StartDate}",OutputEnd="${EndDate}")
+WriteDateValue(TSList="AllMatchingTSID",TSID="CLAFORCO-Streamflow-Median-Day",OutputFile="results/CLAFORCO-Streamflow-Median-Day.dv",Precision="2",WriteDataFlags="False",OutputStart="${StartDate}",OutputEnd="${EndDate}")

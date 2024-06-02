@@ -1,0 +1,63 @@
+StartLog(LogFile="results/download-swsi.tstool.log")
+# This command file downloads the Surface Water Supply Index from the Colorado Information Marketplace
+# for the Poudre Basin.
+#
+SetProperty(PropertyName="HUC",PropertyType="Integer",PropertyValue="10190007")
+#
+# ================== DWR Surface Water Supply Index by HUC ====================
+# See:  https://data.colorado.gov/Water/DWR-Surface-Water-Supply-Index-by-HUC/m9cg-gqek/data
+# First download the SWSI data from Colorado Information Marketplace
+#
+# OData v4:
+# - compressed if no odata=verbose
+# - 406 error of odata=verbose
+# WebGet(URI="https://data.colorado.gov/api/odata/v4/m9cg-gqek",HttpHeaders="Accept:application/json;odata=verbose",LocalFile="downloads/swsi-by-huc-odata4.json")
+# OData v2:
+# - does not support JSON?
+# WebGet(URI="https://data.colorado.gov/OData.svc/m9cg-gqek",LocalFile="downloads/swsi-by-huc-odata2.xml")
+# Socrata SODA
+# Full dataset:
+# - works
+# WebGet(URI="https://data.colorado.gov/resource/m9cg-gqek.json",LocalFile="downloads/swsi-by-huc-soda.json")
+# Only the Poudre (HUC8=10190007), JSON
+# WebGet(URI="https://data.colorado.gov/resource/m9cg-gqek.json?$query=SELECT * WHERE huc8 = ${HUC} ORDER BY report_year, report_month",LocalFile="downloads/swsi-by-huc-soda-${HUC}.json")
+# Only the Poudre (HUC8=10190007), CSV
+WebGet(URI="https://data.colorado.gov/resource/m9cg-gqek.csv?$query=SELECT * WHERE huc8 = ${HUC} ORDER BY report_year, report_month",LocalFile="downloads/swsi-by-huc-soda-${HUC}.csv")
+#
+# Read the SWSI dataset into a table:
+# - process 'report_year' and 'report_month' columns into YYYY-MM format as 'report_date'
+ReadTableFromDelimitedFile(TableID="SWSI_Table",InputFile="downloads/swsi-by-huc-soda-${HUC}.csv",DoubleColumns="swsi,nep,swsi_previous_year,change_from_previous_year,reservoir_storage_nep,stream_flow_nep,forecasted_runoff_nep",IntegerColumns="report_year,report_month")
+FormatTableString(TableID="SWSI_Table",InputColumns="report_year,report_month",Format="%04d-%02d",OutputColumn="report_date",InsertBeforeColumn="swsi")
+# ManipulateTableString(TableID="SWSI_Table",InputColumn1="report_date",Operator="ToDateTime",OutputColumn="report_date")
+#
+# Convert the table to time series:
+# - CIM has bad data for 2022-05 through 2022-08 (have notified DWR)
+# - consequently, cut off the period at April
+SetProperty(PropertyName="TableEnd",PropertyType="DateTime",PropertyValue="CurrentToMonth - 1Month")
+TableToTimeSeries(TableID="SWSI_Table",DateTimeColumn="report_date",LocationID="${HUC}",ValueColumn="swsi,nep,swsi_previous_year,change_from_previous_year,reservoir_storage_nep,stream_flow_nep,forecasted_runoff_nep",DataSource="CODWR",DataType="swsi,nep,sws_previous_year,change_from_previous_year,reservoir_storage_nep,stream_flow_nep,forecasted_runoff_nep",Interval="Month",Alias="${HUC}-%T",InputEnd="${TableEnd}")
+#
+# ================== DWR Surface Water Supply Index Component by HUC ====================
+# See: https://data.colorado.gov/Water/DWR-Surface-Water-Supply-Index-Component-by-HUC/xbs6-xrne/data
+# Only the Poudre (HUC8=10190007), CSV
+WebGet(URI="https://data.colorado.gov/resource/xbs6-xrne.csv?$query=SELECT * WHERE huc8 = ${HUC} ORDER BY report_year, report_month",LocalFile="downloads/swsi-component-by-huc-soda-${HUC}.csv")
+#
+# Read the SWSI dataset into a table:
+# - process 'report_year' and 'report_month' columns into YYYY-MM format as 'report_date'
+ReadTableFromDelimitedFile(TableID="SWSI_Component_Table",InputFile="downloads/swsi-component-by-huc-soda-${HUC}.csv",DoubleColumns="component_volume,component_nep",IntegerColumns="report_year,report_month")
+FormatTableString(TableID="SWSI_Component_Table",InputColumns="report_year,report_month",Format="%04d-%02d",OutputColumn="report_date",InsertBeforeColumn="component_type")
+#
+# Convert the table to time series.
+TableToTimeSeries(TableID="SWSI_Component_Table",DateTimeColumn="report_date",LocationColumn="component_id",DataTypeColumn="component_type",ValueColumn="component_volume",DataSource="CODWR",Interval="Month",Alias="%L-%T-Volume")
+TableToTimeSeries(TableID="SWSI_Component_Table",DateTimeColumn="report_date",LocationColumn="component_id",DataTypeColumn="component_type",ValueColumn="component_nep",DataSource="CODWR",Interval="Month",Alias="%L-%T-NEP")
+#
+# Process the graph product:
+# - currently the template candidate and template are the same since only the Poudre is handled
+# - if this workflow is scaled to other basins the template can be modified to use properties
+ProcessTSProduct(TSProductFile="swsi-huc-graph-template.tsp",OutputFile="results/${HUC}-swsi.png",OutputProductFile="results/swsi-huc-graph-template-candidate.json")
+CopyFile(InputFile="results/swsi-huc-graph-template-candidate.json",OutputFile="results/swsi-huc-graph-template.json")
+#
+# Write the time series file for viewing on the web:
+# - the DateValue file is for the chart
+# - the cwv file is for the indicator
+WriteDateValue(TSList="AllMatchingTSID",TSID="${HUC}-swsi",OutputFile="results/${HUC}-swsi.dv",Precision="2")
+WriteDelimitedFile(TSList="AllMatchingTSID",TSID="${HUC}-swsi",OutputFile="results/${HUC}-swsi.csv",Precision="2")

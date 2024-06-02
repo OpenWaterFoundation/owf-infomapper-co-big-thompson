@@ -1,0 +1,733 @@
+{
+  "title": "Big Thompson Basin Information",
+  "homePage": "/content-pages/home.md",
+  "favicon": "/img/owf-favicon-32x32.ico",
+  "dataUnitsPath": "/system/DATAUNIT",
+  "googleAnalyticsTrackingId": "UA-135465513-1",
+  "version": "1.0.0 (2024-05-31)",
+  "datastores": [
+     {
+        "name": "SateModGitHub",
+        "type": "owf.datstore.statemod",
+        "rootUrl": "https://raw.githubusercontent/path" 
+     }
+  ],
+  "mainMenu": [
+    {
+      "id": "Dashboards",
+      "name": "Dashboards",
+      "description" : "Menu for dashboards",
+      "menus": [
+        {
+          "id": "big-thompson-main-dashboard",
+          "name": "Main Dashboard",
+          "description": "Main Test dashboard.",
+          "action": "dashboard",
+          "dashboardFile": "/dashboards/main/main-dashboard.json",
+          "tooltip": "Big Thompson Basin main dashboard"
+        },
+        {
+          "id": "big-thompson-water-affordability-dashboard",
+          "name": "Water Affordability Dashboard",
+          "description": "Water affordability indicators.",
+          "action": "dashboard",
+          "dashboardFile": "/dashboards/water-affordability/water-affordability-dashboard.json",
+          "tooltip": "Big Thompson Basin water affordability indicators",
+          "enabled": "false"
+        },
+        {
+          "id": "big-thompson-basin-water-supply-dashboard",
+          "name": "Water Supply (for Basin) Dashboard",
+          "description": "Water supply for basin indicators.",
+          "action": "dashboard",
+          "dashboardFile": "/dashboards/water-supply-basin/water-supply-basin-dashboard.json",
+          "tooltip": "Big Thompson Basin water supply indicators"
+        },
+        {
+          "id": "big-thompson-providers-water-supply-dashboard",
+          "name": "Water Supply (for Providers) Dashboard",
+          "description": "Water supply for providers indicators.",
+          "action": "dashboard",
+          "dashboardFile": "/dashboards/water-supply-providers/water-supply-providers-dashboard.json",
+          "tooltip": "Big Thompson Basin providers water supply indicators",
+          "enabled": "false"
+        },
+        {
+          "id": "big-thompson-water-security-dashboard",
+          "name": "Water Security Dashboard",
+          "description": "Water security indicators.",
+          "action": "dashboard",
+          "dashboardFile": "/dashboards/water-security/water-security-dashboard.json",
+          "tooltip": "Big Thompson Basin water security indicators",
+          "enabled": "false"
+        },
+        {
+          "id": "big-thompson-environmental-health-dashboard",
+          "name": "Environmental Health Dashboard",
+          "description": "Environmental health indicators.",
+          "action": "dashboard",
+          "dashboardFile": "/dashboards/environmental-health/environmental-health-dashboard.json",
+          "tooltip": "Big Thompson Basin environmental health indicators",
+          "enabled": "false"
+        },
+        {
+          "id": "big-thompson-local-agriculture-dashboard",
+          "name": "Local Agriculture Dashboard",
+          "description": "Local agriculture indicators.",
+          "action": "dashboard",
+          "dashboardFile": "/dashboards/local-agriculture/local-agriculture-dashboard.json",
+          "tooltip": "Big Thompson Basin local agriculture indicators",
+          "enabled": "false"
+        },
+        {
+          "id": "big-thompson-recreation-dashboard",
+          "name": "Recreation Dashboard",
+          "description": "Recreation indicators.",
+          "action": "dashboard",
+          "dashboardFile": "/dashboards/recreation/recreation-dashboard.json",
+          "tooltip": "Big Thompson Basin recreation indicators",
+          "enabled": "false"
+        },
+        {
+          "id": "big-thompson-long-view-dashboard",
+          "name": "Long View Dashboard",
+          "description": "Long view indicators.",
+          "action": "dashboard",
+          "dashboardFile": "/dashboards/long-view/long-view-dashboard.json",
+          "tooltip": "Big Thompson Basin long view indicators",
+          "enabled": "false"
+        }
+      ]
+    },
+    {
+      "id": "SupportingData",
+      "name": "Supporting Data",
+      "description" : "This menu is used for supporting data that is used in other maps.  Set to visible to test but should not be visible in production.",
+      "align": "left",
+      "visible": "false",
+      "menus": [
+        {
+          "id": "continental-divide",
+          "name": "Physical - Continental Divide",
+          "action": "displayMap",
+          "mapProject" : "data-maps/SupportingData/Physical-ContinentalDivide/continental-divide-map.json"
+        },
+        {
+          "id": "state-boundary",
+          "name": "Political - Colorado State Boundary",
+          "action": "displayMap",
+          "mapProject" : "data-maps/SupportingData/Political-ColoradoStateBoundary/co-state-boundary-map.json"
+        }
+      ]
+    },
+    {
+      "id": "BasinEntities",
+      "name": "Basin Entities",
+      "align": "left",
+      "menus": [
+        {
+          "id": "entities-codwr-waterdistricts",
+          "name": "Administration - CO DWR Water Districts",
+          "action": "displayMap",
+          "mapProject" : "data-maps/BasinEntities/Administration-CoDwrWaterDistricts/codwr-waterdistricts-map.json"
+        },
+        {
+          "id": "entities-roundtables",
+          "name": "Administration - IBCC Roundtable Basins",
+          "action": "displayMap",
+          "mapProject" : "data-maps/BasinEntities/Administration-Roundtables/roundtables-map.json"
+        },
+        {
+          "id": "entities-counties",
+          "name": "Political - Counties",
+          "action": "displayMap",
+          "mapProject" : "data-maps/BasinEntities/Political-Counties/counties-map.json",
+          "separatorBefore" : true
+        },
+        {
+          "id": "entities-legislative",
+          "name": "Political - Legislative Districts",
+          "action": "displayMap",
+          "mapProject" : "data-maps/BasinEntities/Political-LegislativeDistricts/legislative-districts-map.json"
+        },
+        {
+          "id": "entities-basins",
+          "name": "Physical - Basins",
+          "separatorBefore" : true,
+          "action": "displayMap",
+          "mapProject" : "data-maps/BasinEntities/Physical-Basins/basins-map.json"
+        },
+        {
+          "id": "entities-stream-reaches",
+          "name": "Physical - Stream Reaches",
+          "action": "displayMap",
+          "mapProject" : "data-maps/BasinEntities/Physical-StreamReaches/stream-reaches-map.json"
+        },
+        {
+          "id": "entities-ditches",
+          "name":  "Agriculture - Ditches",
+          "action": "displayMap",
+          "mapProject" : "data-maps/BasinEntities/Agriculture-Ditches/ditches-map.json",
+          "doubleSeparatorBefore" : true
+        },
+        {
+          "id": "entities-farms-and-dairies",
+          "name":  "Agriculture - Farms and Dairies",
+          "action": "displayMap",
+          "mapProject" : "data-maps/BasinEntities/Agriculture-FarmsAndDairies/farms-and-dairies-map.json"
+        },
+        {
+          "id": "entities-education",
+          "name": "Education - Organizations",
+          "action": "displayMap",
+          "mapProject": "data-maps/BasinEntities/Education-Organizations/education-orgs-map.json",
+          "separatorBefore" : true
+        },
+        {
+          "id": "entities-instream",
+          "name": "Environment - Instream Flow Reaches",
+          "action": "displayMap",
+          "mapProject": "data-maps/BasinEntities/Environment-InstreamFlowReaches/instream-reaches-map.json",
+          "separatorBefore" : true
+        },
+        {
+          "id": "entities-envorg",
+          "name": "Environment - Organizations",
+          "action": "displayMap",
+          "mapProject": "data-maps/BasinEntities/Environment-Organizations/environment-orgs-map.json"
+        },
+        {
+          "id": "entities-breweries",
+          "name":  "Industry - Breweries",
+          "action": "displayMap",
+          "mapProject" : "data-maps/BasinEntities/Industry-Breweries/breweries-map.json",
+          "separatorBefore" : true
+        },
+        {
+          "id": "entities-municipalities",
+          "name": "Municipal - Municipalities",
+          "action": "displayMap",
+          "mapProject" : "data-maps/BasinEntities/Municipal-Municipalities/municipalities-map.json",
+          "separatorBefore" : true
+        },
+        {
+          "id": "entities-boating-orgs",
+          "name": "Recreation - Boating",
+          "action": "displayMap",
+          "mapProject": "data-maps/BasinEntities/Recreation-Boating/boating-map.json",
+          "separatorBefore" : true
+        },
+        {
+          "id": "entities-trails",
+          "name": "Recreation - Trails",
+          "action": "displayMap",
+          "mapProject": "data-maps/BasinEntities/Recreation-Trails/trails-map.json"
+        },
+        {
+          "id": "entities-wq",
+          "name": "Water Quality - Monitoring",
+          "action": "displayMap",
+          "mapProject": "data-maps/BasinEntities/WaterQuality-Monitoring/wq-monitoring-map.json",
+          "separatorBefore" : true
+        },
+        {
+          "id": "entities-water-providers",
+          "name": "Water Supply - Water Providers",
+          "action": "displayMap",
+          "mapProject": "data-maps/BasinEntities/WaterSupply-WaterProviders/water-providers-map.json",
+          "separatorBefore" : true
+        },
+        {
+          "id": "entities-transbasin",
+          "name": "Water Supply - Transbasin",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "data-maps/BasinEntities/WaterSupply-Transbasin/transbasin-map.json"
+        },
+        {
+          "id": "test1",
+          "name": "Test 1 for New Features",
+          "enabled": false,
+          "visible": false,
+          "action": "displayMap",
+          "mapProject": "data-maps/BasinEntities/Z-Test1/test-map.json"
+        }
+      ]
+    },
+    {
+      "id": "HistoricalData",
+      "name": "Historical Data",
+      "align": "left",
+      "menus" : [
+        {
+          "id": "hist-ag-ownership",
+          "name": "Agriculture - Ditch Company Ownership",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile"
+        },
+        {
+          "id": "hist-ag-diversions",
+          "name": "Agriculture - Diversions",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile"
+        },
+        {
+          "id": "hist-ag-irrigated",
+          "name": "Agriculture - Irrigated Lands",
+          "action": "displayMap",
+          "mapProject": "data-maps/HistoricalData/Agriculture-IrrigatedLands/irrigated-lands-map.json"
+        },
+        {
+          "id": "hist-ag-rentals",
+          "name": "Agriculture - Water Rentals",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile"
+        },
+        {
+          "id": "hist-env-climatechange",
+          "name": "Environment - Climate Change",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile",
+          "separatorBefore" : true
+        },
+        {
+          "id": "hist-env-floods",
+          "name": "Environment - Floods",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile"
+        },
+        {
+          "id": "hist-env-flows",
+          "name": "Environment - Flows",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile"
+        },
+        {
+          "id": "hist-env-wq",
+          "name": "Environment - Water Quality",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile"
+        },
+        {
+          "id": "hist-env-wildfires",
+          "name": "Environment - Wildfires",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile"
+        },
+        {
+          "id": "hist-muni-pop",
+          "name": "Municipal - Population",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile",
+          "separatorBefore" : true
+        },
+        {
+          "id": "hist-muni-demand",
+          "name": "Municipal - Water Demand",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile"
+        },
+        {
+          "id": "hist-rec-boating",
+          "name": "Recreation - Boating Days",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile",
+          "separatorBefore" : true
+        },
+        {
+          "id": "hist-cbt",
+          "name": "Water Supply - CBT Quota and Deliveries",
+          "separatorBefore" : true,
+          "action": "externalLink",
+          "url": "https://www.northernwater.org/your-water/allottees/cbt-quota"
+        },
+        {
+          "id": "hist-snow",
+          "name": "Water Supply - Snow",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile"
+        },
+        {
+          "id": "hist-streamflow",
+          "name": "Water Supply - Streamflow",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile"
+        }
+      ]
+    },
+    {
+      "id": "CurrentConditions",
+      "name": "Current Conditions",
+      "align": "left",
+      "menus" : [
+        {
+          "id": "current-notices",
+          "name": "System - Important Notices",
+          "action": "contentPage",
+          "markdownFile": "content-pages/notices.md"
+        },
+        {
+          "id": "current-pointflow",
+          "name": "System - Point Flow",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile"
+        },
+        {
+          "id": "current-calls",
+          "name": "Administration - Calls (South Platte)",
+          "separatorBefore" : true,
+          "action": "externalLink",
+          "url": "https://dwr.state.co.us/Tools/AdministrativeCalls/Active?submitButton=Submit&SelectedWaterDivisionId=1"
+        },
+        {
+          "id": "current-floods",
+          "name": "Environment - Floods",
+          "separatorBefore" : true,
+          "action": "displayMap",
+          "mapProject": "data-maps/CurrentConditions/Environment-Floods/floods-map.json"
+        },
+        {
+          "id": "current-wq",
+          "name": "Environment - Water Quality",
+          "enabled": false,
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMap"
+        },
+        {
+          "id": "current-wildfires",
+          "name": "Environment - Wildfires",
+          "action": "displayMap",
+          "mapProject": "data-maps/CurrentConditions/Environment-Wildfires/wildfires-map.json"
+        },
+        {
+          "id": "current-boating",
+          "name": "Recreation - Boating",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "boatingMap",
+          "separatorBefore" : true
+        },
+        {
+          "id": "current-fishing",
+          "name": "Recreation - Fishing",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "fishingMap"
+        },
+        {
+          "id": "current-drought",
+          "name": "Water Supply - Drought",
+          "separatorBefore" : true,
+          "action": "displayMap",
+          "mapProject": "data-maps/CurrentConditions/WaterSupply-Drought/drought-map.json"
+        },
+        {
+          "id": "current-ops",
+          "name": "Water Supply - Operations",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile"
+        },
+        {
+          "id": "current-reservoirs",
+          "name": "Water Supply - Reservoirs (Storage)",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile"
+        },
+        {
+          "id": "current-snowpack",
+          "name": "Water Supply - Snowpack",
+          "action": "displayMap",
+          "mapProject": "data-maps/CurrentConditions/WaterSupply-Snowpack/snowpack-map.json"
+        },
+        {
+          "id": "current-streamflow",
+          "name": "Water Supply - Streamflow",
+          "action": "displayMap",
+          "mapProject": "data-maps/CurrentConditions/WaterSupply-Streamflow/streamflow-map.json"
+        },
+        {
+          "id": "current-evap",
+          "name": "Weather - Evapotranspiration",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile",
+          "separatorBefore" : true
+        },
+        {
+          "id": "current-soilmoisture",
+          "name": "Weather - Soil Moisture",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile"
+        },
+        {
+          "id": "current-wind",
+          "name": "Weather - Wind",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile"
+        }
+      ]
+    },
+    {
+      "id": "SeasonalOutlook",
+      "name": "Seasonal Outlook",
+      "align": "left",
+      "menus" : [
+        {
+          "id": "season-system",
+          "name": "System",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile"
+        },
+        {
+          "id": "season-diversions",
+          "name": "Agriculture - Diversions",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile",
+          "separatorBefore" : true
+        },
+        {
+          "id": "season-wildfires",
+          "name": "Environment - Wildfires",
+          "separatorBefore" : true,
+          "action": "contentPage",
+          "align": "right",
+          "markdownFile": "content-pages/season-wildfires.md"
+        },
+        {
+          "id": "season-cbt",
+          "name": "Water Supply - CBT Quota",
+          "separatorBefore" : true,
+          "action": "externalLink",
+          "url": "https://www.northernwater.org/your-water/allottees/cbt-quota"
+        },
+        {
+          "id": "season-drought",
+          "name": "Water Supply - Drought",
+          "action": "externalLink",
+          "url": "https://www.cpc.ncep.noaa.gov/products/expert_assessment/month_drought.png"
+        },
+        {
+          "id": "season-ops",
+          "name": "Water Supply - Operations",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile"
+        },
+        {
+          "id": "season-reservoirs",
+          "name": "Water Supply - Reservoirs (Storage)",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile"
+        },
+        {
+          "id": "season-snow",
+          "name": "Water Supply - Snow",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile"
+        }
+      ]
+    },
+    {
+      "id": "FuturePlanning",
+      "name": "Future Planning",
+      "align": "left",
+      "menus" : [
+        {
+          "id": "planning-overview",
+          "name": "Overview",
+          "action": "externalLink",
+          "action": "contentPage",
+          "align": "right",
+          "markdownFile": "content-pages/planning-overview.md"
+        },
+        {
+          "id": "planning-ag-transfers",
+          "name": "Agriculture - Land Transfer",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile",
+          "separatorBefore" : true
+        },
+        {
+          "id": "planning-ag-food",
+          "name": "Agriculture - Food Production",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile"
+        },
+        {
+          "id": "planning-env-climatechange",
+          "name": "Environment - Climate Change",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile",
+          "separatorBefore" : true
+        },
+        {
+          "id": "planning-env-openspace",
+          "name": "Environment - Open Space",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile"
+        },
+        {
+          "id": "planning-env-smps",
+          "name": "Environment - Stream Management & Watershed Plans",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject" : "theNameOfTheMapProjectFile"
+        },
+        {
+          "id": "planning-env-wildfires",
+          "name": "Environment - Wildfires",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile"
+        },
+        {
+          "id": "planning-muni-growth",
+          "name": "Municipal - Growth",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile",
+          "separatorBefore" : true
+        },
+        {
+          "id": "planning-muni-projects",
+          "name": "Municipal - Major Projects",
+          "action": "displayMap",
+          "mapProject": "data-maps/FuturePlanning/Municipal-MajorProjects/projects-map.json"
+        },
+        {
+          "id": "planning-floodplains",
+          "name": "Municipal - Stormwater/Floodplain Plans",
+          "enabled": "false",
+          "action": "displayMap",
+          "mapProject": "theNameOfTheMapProjectFile"
+        },
+        {
+          "id": "planning-ws-cwp",
+          "name": "Water Supply - Colorado Water Plan",
+          "separatorBefore" : true,
+          "action": "externalLink",
+          "url": "https://www.colorado.gov/cowaterplan"
+        }
+      ]
+    },
+    {
+      "id": "Resources",
+      "name": "Resources",
+      "align": "left",
+      "menus" : [
+        {
+          "id": "about",
+          "name": "About Big Thompson Basin Information",
+          "action": "contentPage",
+          "align": "right",
+          "markdownFile": "content-pages/about.md"
+        },
+        {
+          "id": "sitemap",
+          "name": "Site Map",
+          "action": "contentPage",
+          "align": "right",
+          "markdownFile": "content-pages/sitemap.md"
+        },
+        {
+          "id": "infomapper-doc",
+          "name": "InfoMapper Documentation",
+          "action": "externalLink",
+          "align": "right",
+          "url": "http://software.openwaterfoundation.org/infomapper/latest/doc-user/"
+        },
+        {
+          "id": "contact",
+          "name": "Contact",
+          "separatorBefore": true,
+          "action": "contentPage",
+          "align": "right",
+          "markdownFile": "content-pages/contact.md"
+        },
+        {
+          "id": "credits",
+          "name": "Credits",
+          "action": "contentPage",
+          "align": "right",
+          "markdownFile": "content-pages/credits.md"
+        },
+        {
+          "id": "data-resources",
+          "name": "Data & Information Resources",
+          "action": "contentPage",
+          "align": "right",
+          "markdownFile": "content-pages/data-resources.md"
+        },
+        {
+          "id": "funders",
+          "name": "Funding Contributors",
+          "action": "contentPage",
+          "align": "right",
+          "markdownFile": "content-pages/funders.md"
+        },
+        {
+          "id": "funding-request",
+          "name": "Funding Request",
+          "action": "externalLink",
+          "url": "https://rivers.openwaterfoundation.org/co/big-thompson/latest/assets/app/content-pages/OWF-RiverBasinInfoWebsites-FundingRequest-2020-12-06.pdf",
+          "align": "right"
+        },
+        {
+          "id": "license",
+          "name": "License",
+          "action": "contentPage",
+          "align": "right",
+          "markdownFile": "content-pages/license.md"
+        },
+        {
+          "id": "release-notes",
+          "name": "Release Notes",
+          "action": "contentPage",
+          "align": "right",
+          "markdownFile": "content-pages/release-notes.md"
+        },
+        {
+          "id": "report-issue",
+          "name": "Reporting an Issue",
+          "action": "contentPage",
+          "align": "right",
+          "markdownFile": "content-pages/report-issue.md"
+        },
+        {
+          "id": "owf",
+          "name": "Open Water Foundation",
+          "action": "externalLink",
+          "separatorBefore": true,
+          "align": "right",
+          "url": "http://openwaterfoundation.org"
+        }
+      ]
+    }
+  ]
+}

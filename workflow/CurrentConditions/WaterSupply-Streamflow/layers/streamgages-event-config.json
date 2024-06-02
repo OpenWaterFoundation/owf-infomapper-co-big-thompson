@@ -1,0 +1,12 @@
+{
+  "id" : "streamgages-event-config",
+  "name": "Stream gages event configuration",
+  "description":  "List main attributes and provide buttons to graph time series.",
+  "layerAttributes" : {
+    "include" : [ "stationName", "abbrev", "wdid", "structureType", "dataSourceAbbrev", "waterSource", "moreInformation" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

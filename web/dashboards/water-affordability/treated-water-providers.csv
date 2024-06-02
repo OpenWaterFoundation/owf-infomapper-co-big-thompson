@@ -1,0 +1,8 @@
+# Treated water providers serving customers.
+# The first line is the header.
+ProviderId,ProviderName
+ELCO,East Larimer County Water District
+FtCollins,Fort Collins
+FCLWD,Fort Collins Loveland Water District
+Greeley,Greeley
+NWCWCD,North Weld County Water District

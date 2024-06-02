@@ -1,0 +1,11 @@
+# Categorized classification table for US Drought Monitor
+# - the value corresponds to DM value
+# - see: https://droughtmonitor.unl.edu/CurrentMap/StateDroughtMonitor.aspx?CO
+value,color,opacity,fillColor,fillOpacity,weight,label
+0,#ffff00,0.4,#ffff00,0.4,1,"D0 (Abnormally Dry)"
+1,#fcd37f,0.5,#fcd37f,0.4,1,"D1 (Moderate Drought)"
+2,#ffaa00,0.4,#ffaa00,0.4,1,"D2 (Severe Drought)"
+3,#e60000,0.4,#e60000,0.4,1,"D3 (Extreme Drought)"
+4,#730000,0.4,#730000,0.4,1,"D4 (Exceptional Drought)"
+# Use full transparency for NoData
+NoData,#000000,1.0,#000000,1.0,1,"No data"

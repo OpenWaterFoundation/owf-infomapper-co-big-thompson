@@ -1,0 +1,8 @@
+# Example to read municipal water cost data.
+ReadTableFromDelimitedFile(TableID="TreatedWaterTapFeeCosts",InputFile="tap-fee.csv")
+TableToTimeSeries(TableID="TreatedWaterTapFeeCosts",DateTimeColumn="Date",LocationColumn="Provider",ValueColumn="Single Family Tap Fee",Interval=Year,Units="$",Alias="%L-TapFee")
+ReadTableFromDelimitedFile(TableID="TreatedWaterPlantInvestmentFeeCosts",InputFile="plant-investment-fee.csv")
+TableToTimeSeries(TableID="TreatedWaterPlantInvestmentFeeCosts",DateTimeColumn="Date",LocationColumn="Provider",ValueColumn="Single Family PIF",Interval=Year,Units="$",Alias="%L-PlantInvestmentFee")
+ReadTableFromDelimitedFile(TableID="WaterUtilityBillCosts",InputFile="water-utility-bill.csv")
+TableToTimeSeries(TableID="WaterUtilityBillCosts",DateTimeColumn="Date",LocationColumn="Provider",ValueColumn="Single Family Water Bill",Interval=Year,Units="$",Alias="%L-MonthlyUtilityBill")
+ProcessTSProduct(TSProductFile="water-affordability-graph-example.tsp",VisibleStart="1978-01",VisibleEnd="2022-12",OutputProductFile="water-affordability-graph-example-template.json")

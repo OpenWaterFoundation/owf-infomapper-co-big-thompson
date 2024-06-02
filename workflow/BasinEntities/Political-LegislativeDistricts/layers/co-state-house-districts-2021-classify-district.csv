@@ -1,0 +1,88 @@
+# Category classification table for Colorado State House
+# - the value corresponds to DISTRICT_N attribute
+# - use the same properties as the multi-district layer but make the district totally transparent
+# - the label uses DISTRICT and NAME values, currently hard-coded here because simple
+value,color,opacity,fillColor,fillOpacity,weight,label
+# Districts that physically overlap the Poudre
+# - dark green
+48,#59b300,1.0,#59b300,0.3,5,"District 48 - Poudre in District (a little)"
+49,#59b300,1.0,#59b300,0.3,5,"District 49 - Poudre in District"
+50,#59b300,1.0,#59b300,0.3,5,"District 50 - Poudre in District"
+51,#59b300,1.0,#59b300,0.3,5,"District 51 - Poudre in District (a little)"
+52,#59b300,1.0,#59b300,0.3,5,"District 52 - Poudre in District"
+53,#59b300,1.0,#59b300,0.3,5,"District 53 - Poudre in District"
+63,#59b300,1.0,#59b300,0.3,5,"District 63 - Poudre in District"
+64,#59b300,1.0,#59b300,0.3,5,"District 64 - Poudre in District"
+65,#59b300,1.0,#59b300,0.3,5,"District 65 - Poudre in District"
+#
+#--
+# Districts that provide water to the Poudre via transbasin diversions
+# - light blue
+13,#003cb3,1.0,#003cb3,0.3,2,"District 13 - Transbasin diversion to the Poudre"
+#--
+# Districts that do transfers out of the basin via transbasin diversions
+# - yellow for planned #ffff00
+# - reddish for actual #b30000
+31,#ffff00,1.0,#ffff00,0.3,2,"District 31 - Transbasin diversion from the Poudre (Thornton pipeline)"
+33,#ffff00,1.0,#ffff00,0.3,2,"District 33"
+34,#ffff00,1.0,#ffff00,0.3,2,"District 34"
+#--
+# Other districts in Division 1
+# - light green, #b3ff66
+1,#b3ff66,1.0,#b3ff66,0.3,2,"District 1 - Overlaps South Platte (Division 1)"
+2,#b3ff66,1.0,#b3ff66,0.3,2,"District 2"
+3,#b3ff66,1.0,#b3ff66,0.3,2,"District 3"
+4,#b3ff66,1.0,#b3ff66,0.3,2,"District 4"
+5,#b3ff66,1.0,#b3ff66,0.3,2,"District 5"
+6,#b3ff66,1.0,#b3ff66,0.3,2,"District 6"
+7,#b3ff66,1.0,#b3ff66,0.3,2,"District 7"
+8,#b3ff66,1.0,#b3ff66,0.3,2,"District 8"
+9,#b3ff66,1.0,#b3ff66,0.3,2,"District 9"
+10,#b3ff66,1.0,#b3ff66,0.3,2,"District 10"
+11,#b3ff66,1.0,#b3ff66,0.3,2,"District 11"
+12,#b3ff66,1.0,#b3ff66,0.3,2,"District 12"
+19,#b3ff66,1.0,#b3ff66,0.3,2,"District 19"
+20,#b3ff66,1.0,#b3ff66,0.3,2,"District 20"
+23,#b3ff66,1.0,#b3ff66,0.3,2,"District 23"
+24,#b3ff66,1.0,#b3ff66,0.3,2,"District 24"
+25,#b3ff66,1.0,#b3ff66,0.3,2,"District 25"
+27,#b3ff66,1.0,#b3ff66,0.3,2,"District 27"
+28,#b3ff66,1.0,#b3ff66,0.3,2,"District 28"
+29,#b3ff66,1.0,#b3ff66,0.3,2,"District 29"
+30,#b3ff66,1.0,#b3ff66,0.3,2,"District 30"
+32,#b3ff66,1.0,#b3ff66,0.3,2,"District 32"
+35,#b3ff66,1.0,#b3ff66,0.3,2,"District 35"
+36,#b3ff66,1.0,#b3ff66,0.3,2,"District 36"
+37,#b3ff66,1.0,#b3ff66,0.3,2,"District 37"
+39,#b3ff66,1.0,#b3ff66,0.3,2,"District 39"
+38,#b3ff66,1.0,#b3ff66,0.3,2,"District 38"
+40,#b3ff66,1.0,#b3ff66,0.3,2,"District 40"
+41,#b3ff66,1.0,#b3ff66,0.3,2,"District 41"
+42,#b3ff66,1.0,#b3ff66,0.3,2,"District 42"
+43,#b3ff66,1.0,#b3ff66,0.3,2,"District 43"
+44,#b3ff66,1.0,#b3ff66,0.3,2,"District 44"
+45,#b3ff66,1.0,#b3ff66,0.3,2,"District 45"
+56,#b3ff66,1.0,#b3ff66,0.3,2,"District 56"
+60,#b3ff66,1.0,#b3ff66,0.3,2,"District 60"
+61,#b3ff66,1.0,#b3ff66,0.3,2,"District 61"
+#--
+# All other districts
+# - grey boundary, full transparency
+# - #f2f2f2 works OK with MapBox Topographic
+#--
+14,#999999,1.0,#999999,0.0,2,"District 14 - Other Districts"
+15,#999999,1.0,#999999,0.0,2,"District 15"
+16,#999999,1.0,#999999,0.0,2,"District 16"
+17,#999999,1.0,#999999,0.0,2,"District 17"
+18,#999999,1.0,#999999,0.0,2,"District 18"
+21,#999999,1.0,#999999,0.0,2,"District 21"
+22,#999999,1.0,#999999,0.0,2,"District 22"
+26,#999999,1.0,#999999,0.0,2,"District 26"
+46,#999999,1.0,#999999,0.0,2,"District 46"
+47,#999999,1.0,#999999,0.0,2,"District 47"
+54,#999999,1.0,#999999,0.0,2,"District 54"
+55,#999999,1.0,#999999,0.0,2,"District 55"
+57,#999999,1.0,#999999,0.0,2,"District 57"
+58,#999999,1.0,#999999,0.0,2,"District 58"
+59,#999999,1.0,#999999,0.0,2,"District 59"
+62,#999999,1.0,#999999,0.0,2,"District 62"

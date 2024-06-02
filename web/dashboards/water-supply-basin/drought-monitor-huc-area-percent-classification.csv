@@ -1,0 +1,21 @@
+# The value from attribute is compared as follows to determine symbol:
+#  value > valueMin
+#  value <= valueMax
+#
+# See the following for Drought Monitor category information:
+#   https://droughtmonitor.unl.edu/About/AbouttheData/DroughtClassification.aspx
+#
+#   D0 = Abnormally dry
+#   D1 = Moderate dry
+#   D2 = Severe drought
+#   D3 = Extreme drought
+#   D4 = Exceptional drought
+#
+# The indicator is an area-weighted value calculated from the area percentages from above.
+# It is a big
+#
+valueMin,valueMax,color,opacity,fillColor,fillOpacity,weight,label,level
+Missing,#ffffff,0.0,#fffffff,1.00,1,Unknown,white
+-Infinity,<2.0,#ffffff,0.0,#fffffff,1.00,1,Normal or wet,green
+>=2.0,<3.0,#fd0017,0.0,#fd0017,0.35,1,Minor Drought,yellow
+>=3.0,Infinity,#1471fc,0.0,#1471fc,0.35,1,Major Drought,red

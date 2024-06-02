@@ -1,0 +1,11 @@
+{
+  "id" : "natural-lakes-event-config",
+  "name": "Natural lakes event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "cwcb_case_", "lake_name", "isf_type" ], "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

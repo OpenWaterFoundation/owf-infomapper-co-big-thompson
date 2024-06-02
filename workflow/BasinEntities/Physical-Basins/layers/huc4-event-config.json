@@ -1,0 +1,13 @@
+{
+  "id" : "huc4-event-config",
+  "name": "HUC4 event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include-old" : [ "Name", "HUC10", "GNIS_ID", "States", "AreaSqKm", "AreaAcres" ],
+    "include" : [ "name", "huc10", "gnis_id", "states", "areasqkm", "areaacres" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

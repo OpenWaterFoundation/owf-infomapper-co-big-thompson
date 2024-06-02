@@ -1,0 +1,18 @@
+# Category classification table for IBCC Roundtable Basins
+# - the value corresponds to Name attribute
+# - the label uses Label and optionally Name value if different,
+#   currently hard-coded here because simple
+value,color,opacity,fillColor,fillOpacity,weight,label
+# South Plate & Metro basins
+# - dark green
+South Platte,#59b300,1.0,#59b300,0.3,3,"South Platte"
+Metro,#59b300,1.0,#59b300,0.3,5,"Metro (in South Platte physical basin)"
+# Other basins
+# - Orange
+Arkansas,#ffb366,1.0,#ffb366,0.3,3,"Arkansas"
+Colorado,#ffb366,1.0,#ffb366,0.3,3,"Colorado"
+Gunnison,#ffb366,1.0,#ffb366,0.3,3,"Gunnison"
+North Platte,#ffb366,1.0,#ffb366,0.3,3,"North Platte"
+Rio Grande,#ffb366,1.0,#ffb366,0.3,3,"Rio Grande"
+Southwest,#ffb366,1.0,#ffb366,0.3,3,"Southwest (San Juan/Dolores/San Miguel)"
+Yampa/White/Green,#ffb366,1.0,#ffb366,0.3,3,"Yampa/White/Green"

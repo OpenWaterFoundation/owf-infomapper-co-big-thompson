@@ -1,0 +1,117 @@
+# This command file downloads the drought monitor time series for the Poudre Basin HUC8.
+# See documentation:  https://droughtmonitor.unl.edu/DmData/DataDownload/WebServiceInfo.aspx
+#
+#
+SetProperty(PropertyName="HUC",PropertyType=String,PropertyValue="10190007")
+# Format the download dates based to conform to the web service format.
+# SetProperty(PropertyName="StartDate",PropertyType=DateTime,PropertyValue="2019-01-01")
+# SetProperty(PropertyName="StartDate",PropertyType=DateTime,PropertyValue="2010-01-01")
+SetProperty(PropertyName="StartDate",PropertyType=DateTime,PropertyValue="2000-01-01")
+SetProperty(PropertyName="EndDate",PropertyType=DateTime,PropertyValue="CurrentToDay")
+FormatDateTimeProperty(PropertyName="DownloadStartDate",DateTimePropertyName="StartDate",Format="%m/%d/%Y")
+FormatDateTimeProperty(PropertyName="DownloadEndDate",DateTimePropertyName="EndDate",Format="%m/%d/%Y")
+WebGet(URI="https://usdmdataservices.unl.edu/api/HUCStatistics/GetDroughtSeverityStatisticsByAreaPercent?aoi=${HUC}&startdate=${DownloadStartDate}&enddate=${DownloadEndDate}&statisticsType=1",HttpHeaders="Accept:text/csv",LocalFile="downloads/drought-monitor-area-percent-${HUC}.csv")
+#
+# Read the drought monitor data into a table:
+# - sort by the ValidStart column
+ReadTableFromDelimitedFile(TableID="DroughtMonitor",InputFile="downloads/drought-monitor-area-percent-${HUC}.csv",HeaderLines="1",DateTimeColumns="MapDate,ValidStart,ValidEnd",IntegerColumns="HucId")
+SortTable(TableID="DroughtMonitor",SortColumns="ValidStart")
+#
+# Create an overall drought indicator that is calculated by weighting the area percentages as follows:
+# D0*1
+# D1*2
+# D2*3
+# D3*4
+# D4*5
+InsertTableColumn(TableID="DroughtMonitor",InsertColumn="D0_Only",ColumnType=Double,InitialValue="0",ColumnPrecision=2)
+InsertTableColumn(TableID="DroughtMonitor",InsertColumn="D1_Only",ColumnType=Double,InitialValue="0",ColumnPrecision=2)
+InsertTableColumn(TableID="DroughtMonitor",InsertColumn="D2_Only",ColumnType=Double,InitialValue="0",ColumnPrecision=2)
+InsertTableColumn(TableID="DroughtMonitor",InsertColumn="D3_Only",ColumnType=Double,InitialValue="0",ColumnPrecision=2)
+InsertTableColumn(TableID="DroughtMonitor",InsertColumn="D4_Only",ColumnType=Double,InitialValue="0",ColumnPrecision=2)
+InsertTableColumn(TableID="DroughtMonitor",InsertColumn="WeightedSum",ColumnType=Double,InitialValue="0",ColumnPrecision=2)
+InsertTableColumn(TableID="DroughtMonitor",InsertColumn="WeightedSumEx",ColumnType=Double,InitialValue="0",ColumnPrecision=2)
+InsertTableColumn(TableID="DroughtMonitor",InsertColumn="AreaSum",ColumnType=Double,InitialValue="0",ColumnPrecision=2)
+InsertTableColumn(TableID="DroughtMonitor",InsertColumn="AreaSumEx",ColumnType=Double,InitialValue="0",ColumnPrecision=2)
+InsertTableColumn(TableID="DroughtMonitor",InsertColumn="Indicator",ColumnType=Double,InitialValue="0",ColumnPrecision=2)
+InsertTableColumn(TableID="DroughtMonitor",InsertColumn="IndicatorEx",ColumnType=Double,InitialValue="0",ColumnPrecision=2)
+#-------------
+TableMath(TableID="DroughtMonitor",Input1="D0",Operator="*",Input2="1.0",Output="D0_Weighted")
+TableMath(TableID="DroughtMonitor",Input1="D0",Operator="+",Input2="AreaSum",Output="AreaSum")
+TableMath(TableID="DroughtMonitor",Input1="D0_Weighted",Operator="+",Input2="WeightedSum",Output="WeightedSum")
+#
+TableMath(TableID="DroughtMonitor",Input1="D0",Operator="-",Input2="D1",Output="D0_Only")
+TableMath(TableID="DroughtMonitor",Input1="D0_Only",Operator="*",Input2="1.0",Output="D0_WeightedEx")
+TableMath(TableID="DroughtMonitor",Input1="D0_Only",Operator="+",Input2="AreaSumEx",Output="AreaSumEx")
+TableMath(TableID="DroughtMonitor",Input1="D0_WeightedEx",Operator="+",Input2="WeightedSumEx",Output="WeightedSumEx")
+#-------------
+TableMath(TableID="DroughtMonitor",Input1="D1",Operator="*",Input2="2.0",Output="D1_Weighted")
+TableMath(TableID="DroughtMonitor",Input1="D1",Operator="+",Input2="AreaSum",Output="AreaSum")
+TableMath(TableID="DroughtMonitor",Input1="D1_Weighted",Operator="+",Input2="WeightedSum",Output="WeightedSum")
+#
+TableMath(TableID="DroughtMonitor",Input1="D1",Operator="-",Input2="D2",Output="D1_Only")
+TableMath(TableID="DroughtMonitor",Input1="D1_Only",Operator="*",Input2="2.0",Output="D1_WeightedEx")
+TableMath(TableID="DroughtMonitor",Input1="D1_Only",Operator="+",Input2="AreaSumEx",Output="AreaSumEx")
+TableMath(TableID="DroughtMonitor",Input1="D1_WeightedEx",Operator="+",Input2="WeightedSumEx",Output="WeightedSumEx")
+#-------------
+TableMath(TableID="DroughtMonitor",Input1="D2",Operator="*",Input2="3.0",Output="D2_Weighted")
+TableMath(TableID="DroughtMonitor",Input1="D2",Operator="+",Input2="AreaSum",Output="AreaSum")
+TableMath(TableID="DroughtMonitor",Input1="D2_Weighted",Operator="+",Input2="WeightedSum",Output="WeightedSum")
+#
+TableMath(TableID="DroughtMonitor",Input1="D2",Operator="-",Input2="D3",Output="D2_Only")
+TableMath(TableID="DroughtMonitor",Input1="D2_Only",Operator="*",Input2="3.0",Output="D2_WeightedEx")
+TableMath(TableID="DroughtMonitor",Input1="D2_Only",Operator="+",Input2="AreaSumEx",Output="AreaSumEx")
+TableMath(TableID="DroughtMonitor",Input1="D2_WeightedEx",Operator="+",Input2="WeightedSumEx",Output="WeightedSumEx")
+#-------------
+TableMath(TableID="DroughtMonitor",Input1="D3",Operator="*",Input2="4.0",Output="D3_Weighted")
+TableMath(TableID="DroughtMonitor",Input1="D3",Operator="+",Input2="AreaSum",Output="AreaSum")
+TableMath(TableID="DroughtMonitor",Input1="D3_Weighted",Operator="+",Input2="WeightedSum",Output="WeightedSum")
+#
+TableMath(TableID="DroughtMonitor",Input1="D3",Operator="-",Input2="D4",Output="D3_Only")
+TableMath(TableID="DroughtMonitor",Input1="D3_Only",Operator="*",Input2="4.0",Output="D3_WeightedEx")
+TableMath(TableID="DroughtMonitor",Input1="D3_Only",Operator="+",Input2="AreaSumEx",Output="AreaSumEx")
+TableMath(TableID="DroughtMonitor",Input1="D3_WeightedEx",Operator="+",Input2="WeightedSumEx",Output="WeightedSumEx")
+#-------------
+TableMath(TableID="DroughtMonitor",Input1="D4",Operator="*",Input2="5.0",Output="D4_Weighted")
+TableMath(TableID="DroughtMonitor",Input1="D4",Operator="+",Input2="AreaSum",Output="AreaSum")
+TableMath(TableID="DroughtMonitor",Input1="D4_Weighted",Operator="+",Input2="WeightedSum",Output="WeightedSum")
+#
+TableMath(TableID="DroughtMonitor",Input1="D4",Operator="=",Output="D4_Only")
+TableMath(TableID="DroughtMonitor",Input1="D4_Only",Operator="*",Input2="5.0",Output="D4_WeightedEx")
+TableMath(TableID="DroughtMonitor",Input1="D4_Only",Operator="+",Input2="AreaSumEx",Output="AreaSumEx")
+TableMath(TableID="DroughtMonitor",Input1="D4_WeightedEx",Operator="+",Input2="WeightedSumEx",Output="WeightedSumEx")
+#-------------
+# Calculate the final indicators:
+# - weighted average by inclusive and exclusive area for each drought category
+# - subtract 1.0 because drought level D0 area is considered even though level "0"
+TableMath(TableID="DroughtMonitor",Input1="WeightedSum",Operator="/",Input2="AreaSum",Output="Indicator")
+TableMath(TableID="DroughtMonitor",Input1="Indicator",Operator="-",Input2="1.0",Output="Indicator")
+TableMath(TableID="DroughtMonitor",Input1="WeightedSumEx",Operator="/",Input2="AreaSumEx",Output="IndicatorEx")
+TableMath(TableID="DroughtMonitor",Input1="IndicatorEx",Operator="-",Input2="1.0",Output="IndicatorEx")
+#
+# Create time series from the table:
+# - fill forward since USDM is weekly
+# - D0 color = yellow (fffe31)
+# - D1 color = light orange (fbd283)
+# - D2 color = orange (fda924)
+# - D3 color = red (e40013)
+# - D4 color = brown (720005)
+TableToTimeSeries(TableID="DroughtMonitor",DateTimeColumn="ValidStart",LocationID="${HUC}",ValueColumn="D0,D1,D2,D3,D4,D0_Only,D1_Only,D2_Only,D3_Only,D4_Only,Indicator,IndicatorEx",DataSource="USDM",DataType="D0,D1,D2,D3,D4,D0_Only,D1_Only,D2_Only,D3_Only,D4_Only,Indicator,IndicatorEx",Interval=Day,Units="Percent,Percent,Percent,Percent,Percent",Precision="2",Alias="${HUC}-USDM-%T")
+FillRepeat(FillDirection=Forward,MaxIntervals=6)
+#
+# Process the graph product:
+# - currently the candidate is only for the Poudre so the candidate and final templates are the same
+# - if the workflow is scaled to more basins the template can be updated to use ${Property}
+ProcessTSProduct(TSProductFile="drought-monitor-huc-area-percent-graph-template.tsp",OutputFile="results/${HUC}-USDM.png",OutputProductFile="results/drought-monitor-huc-area-percent-graph-template-candidate.json")
+# Don't copy once modified manually to add the dashboard data paths.
+# CopyFile(InputFile="results/drought-monitor-huc-area-percent-graph-template-candidate.json",OutputFile="results/drought-monitor-huc-area-percent-graph-template.json")
+#
+# Output the time series for use in online graphs:
+# - write as separate time series files
+# - output the D2 (severe drought) category as csv to use in an indicator
+WriteDelimitedFile(TSList=AllMatchingTSID,TSID="${HUC}-USDM-Indicator",OutputFile="results/${HUC}-USDM-Indicator.csv",Precision=2)
+WriteDelimitedFile(TSList=AllMatchingTSID,TSID="${HUC}-USDM-IndicatorEx",OutputFile="results/${HUC}-USDM-IndicatorEx.csv",Precision=2)
+WriteDateValue(TSList=AllMatchingTSID,TSID="${HUC}-USDM-D0",OutputFile="results/${HUC}-USDM-D0.dv",Precision=2)
+WriteDateValue(TSList=AllMatchingTSID,TSID="${HUC}-USDM-D1",OutputFile="results/${HUC}-USDM-D1.dv",Precision=2)
+WriteDateValue(TSList=AllMatchingTSID,TSID="${HUC}-USDM-D2",OutputFile="results/${HUC}-USDM-D2.dv",Precision=2)
+WriteDateValue(TSList=AllMatchingTSID,TSID="${HUC}-USDM-D3",OutputFile="results/${HUC}-USDM-D3.dv",Precision=2)
+WriteDateValue(TSList=AllMatchingTSID,TSID="${HUC}-USDM-D4",OutputFile="results/${HUC}-USDM-D4.dv",Precision=2)

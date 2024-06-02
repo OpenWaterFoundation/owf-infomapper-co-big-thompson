@@ -1,0 +1,12 @@
+{
+  "id" : "radio-stations-event-config",
+  "name": "Radio stations event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "Organization", "OrganizationType", "ParentCompany", "Website", "InBasin" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

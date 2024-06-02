@@ -1,0 +1,12 @@
+{
+  "id" : "tv-stations-event-config",
+  "name": "TV stations event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "Organization", "OrganizationType", "ParentCompany", "Website", "InBasin" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

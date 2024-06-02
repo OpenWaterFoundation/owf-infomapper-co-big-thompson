@@ -1,0 +1,15 @@
+# Graduated classification table for FWS precip
+# - general values are used to give an indication of concern
+# - refer to the FWS for more detailed displays
+#
+# The value from attribute is compared as follows to determine symbol:
+#  value > valueMin
+#  value <= valueMax
+valueMin,valueMax,color,opacity,fillColor,fillOpacity,weight,colorName,label,symbolSize,sizeUnits
+-Infinity,<.1,#008a36,0.0,#008a36,1.0,1,green,< .1 inch of precipitation in the last day,4,pixels
+>=.1,<.25,#f5b831,0.0,#f5b831,1.0,1,yellow,,4,pixels
+>=.25,<.5,#ee8818,0.0,#ee8818,1.0,1,orange,,4,pixels
+>=.5,<1,#b63d91,0.0,#b63d91,1.0,1,magenta,,4,pixels
+>=1,Infinity,#d12619,0.0,#d12619,1.0,1,red,,4,pixels
+# Use black for NoData
+NoData,NoData,#000000,0.0,#000000,1.0,1,black,No data,4,pixels

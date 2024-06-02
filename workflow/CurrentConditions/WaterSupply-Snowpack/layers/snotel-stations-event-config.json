@@ -1,0 +1,12 @@
+{
+  "id" : "snotel-stations-event-config",
+  "name": "SNOTEL stations event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "name", "stationId", "countyName", "elevation", "shefId", "StationUrl", "GraphUrl" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id" : "wildfire-perimeters-archive-event-config",
+  "name": "Hover and click event handlers active wildfire perimeters",
+  "description":  "Display only important user-understandable attributes.",
+  "layerAttributes" : {
+    "include" : [ "INCIDENT", "MAP_METHOD", "COMMENTS", "FIRE_YEAR", "GIS_ACRES", "SOURCE" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

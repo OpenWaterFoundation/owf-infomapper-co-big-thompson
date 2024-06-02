@@ -1,0 +1,12 @@
+{
+  "id" : "flood-orgs-event-config",
+  "name": "Flood organizations event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "Organization", "FloodWarningWebpage", "FloodplainRegWebpage" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

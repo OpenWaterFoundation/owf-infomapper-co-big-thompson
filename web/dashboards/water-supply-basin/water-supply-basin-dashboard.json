@@ -1,0 +1,123 @@
+{
+  "metadata": {
+     "author": "Steve Malers, Open Water Foundation",
+     "title": "Poudre Basin Water Supply Dashboard (PROTOTYPE)",
+     "version": "1.0.0"
+  },
+  "layout": {
+     "columns": 4,
+     "backgroundColor": "black",
+     "gutterSize": 5
+  },
+  "widgets": [
+     {
+       "columns": 4,
+       "rows": 1,
+       "type": "title",
+       "name": "WaterSupplyDashboardMainTitle",
+       "title": "Poudre Basin Water Supply Dashboard (PROTOTYPE)",
+       "description": "Poudre Basin Water Supply Dashboard.",
+       "style": {
+          "backgroundColor": "black",
+          "textColor": "#ffffff",
+          "fontSize": "x-large"
+       }
+     },
+     {
+       "columns": 1,
+       "rows": 2,
+       "type": "statusIndicator",
+       "name": "SWSI",
+       "title": "Surface Water Supply Index",
+       "description": "Surface water supply index.",
+       "dataPath": "results/10190007-swsi.csv",
+       "dataFormat": "csv",
+       "columnName": "10190007_swsi",
+       "classificationFile": "swsi-huc-classification.csv"
+     },
+     {
+       "columns": 1,
+       "rows": 2,
+       "type": "statusIndicator",
+       "name": "DroughtMonitor",
+       "title": "Area-weighted US Drought Monitor",
+       "description": "Area-weighted US Drought monitor.",
+       "dataPath": "results/10190007-USDM-Indicator.csv",
+       "dataFormat": "csv",
+       "columnName": "10190007_Indicator",
+       "classificationFile": "drought-monitor-huc-area-percent-classification.csv"
+     },
+     {
+       "columns": 1,
+       "rows": 2,
+       "type": "statusIndicator",
+       "name": "ReservoirStorage",
+       "title": "Reservoir Storage (% of median)",
+       "description": "Reservoir storage.",
+       "dataPath": "results/10190007-reservoir-storage-indicator.csv",
+       "dataFormat": "csv",
+       "columnName": "ReservoirStorage_PercentOfMedian",
+       "classificationFile": "reservoir-storage-indicator-classification.csv"
+     },
+     {
+       "columns": 1,
+       "rows": 2,
+       "type": "statusIndicator",
+       "name": "StreamflowPercentOfMedian",
+       "title": "Streamflow (% of median)",
+       "description": "Streamflow % of median.",
+       "dataPath": "results/10190007-streamflow-indicator.csv",
+       "dataFormat": "csv",
+       "columnName": "Minimum_PercentOfMedian",
+       "classificationFile": "streamflow-indicator-classification.csv"
+     },
+     {
+       "columns": 2,
+       "rows": 6,
+       "type": "chart",
+       "name": "SWSIGraph",
+       "title": "Surface Water Supply Index",
+       "graphTemplatePath": "swsi-huc-graph-template.json",
+       "description": "Surface water supply index.",
+       "style": {
+          "backgroundColor": "lightgrey"
+       }
+     },
+     {
+       "columns": 2,
+       "rows": 6,
+       "type": "chart",
+       "name": "DroughtMonitorGraph",
+       "title": "Drought Monitor",
+       "graphTemplatePath": "drought-monitor-huc-area-percent-graph-template.json",
+       "description": "Drought monitor.",
+       "style": {
+          "backgroundColor": "lightgrey"
+       }
+     },
+     {
+       "columns": 2,
+       "rows": 6,
+       "type": "chart",
+       "name": "ReservoirStorageGraph",
+       "title": "Reservoir Storage",
+       "graphTemplatePath": "reservoir-storage-graph-template.json",
+       "description": "Reservoir storage for major reservoirs.",
+       "style": {
+          "backgroundColor": "lightgrey"
+       }
+     },
+     {
+       "columns": 2,
+       "rows": 6,
+       "type": "chart",
+       "name": "StreamflowGraph",
+       "title": "Streamflow",
+       "graphTemplatePath": "streamflow-graph-template.json",
+       "description": "Streamflow.",
+       "style": {
+          "backgroundColor": "lightgrey"
+       }
+     }
+  ]
+}

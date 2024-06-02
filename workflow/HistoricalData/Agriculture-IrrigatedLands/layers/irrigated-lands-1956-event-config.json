@@ -1,0 +1,12 @@
+{
+  "id" : "irrigated-lands-1956-event-config",
+  "name": "Irrigated lands (1956) event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "CAL_YEAR", "PARCEL_ID", "CROP_TYPE", "IRRIG_TYPE", "ACRES", "DIV", "DISTRICT" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

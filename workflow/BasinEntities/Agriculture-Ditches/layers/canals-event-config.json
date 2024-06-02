@@ -1,0 +1,12 @@
+{
+  "id" : "canals-event-config",
+  "name": "Canals (ditches) event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "NAME", "WDID", "LENGTH" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

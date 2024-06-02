@@ -1,0 +1,6 @@
+# Category classification table for water monitoring basin
+# - the value corresponds to HU_12_NAME attribute
+# - the label uses HU_12_NAME values, currently hard-coded here because simple
+# - 004d4d - greenish blue
+value,color,opacity,fillColor,fillOpacity,weight,label
+North Fork Cache La Poudre River,#004d4d,1.0,#004d4d,0.3,3,"North Fork Cache La Poudre River"

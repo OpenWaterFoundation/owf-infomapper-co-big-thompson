@@ -1,0 +1,12 @@
+{
+  "id" : "boating-orgs-event-config",
+  "name": "Boating organization event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "Organization", "OrganizationType", "Description", "Website", "InBasin" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

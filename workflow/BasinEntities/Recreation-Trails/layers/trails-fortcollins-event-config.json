@@ -1,0 +1,12 @@
+{
+  "id" : "trails-fortcollins-event-config",
+  "name": "Fort Collins trails event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "name", "surface", "bikeuse", "horseuse", "dogs", "rating", "manager" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

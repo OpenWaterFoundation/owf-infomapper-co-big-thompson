@@ -1,0 +1,12 @@
+{
+  "id" : "water-conservancy-districts-event-config",
+  "name": "Water conservancy and conservation districts event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "ABBREV_NAM", "MAIL_ADDRE", "MAIL_CITY", "MAIL_STATE", "MAIL_ZIP", "URL", "lastupdate" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

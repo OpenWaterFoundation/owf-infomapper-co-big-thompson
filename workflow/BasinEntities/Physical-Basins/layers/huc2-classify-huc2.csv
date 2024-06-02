@@ -1,0 +1,6 @@
+# Category classification table for HUC2 basins
+# - the value corresponds to HUC2 attribute
+# - the label uses HUC2 and Name values, currently hard-coded here because simple
+# - #cc9900 is light orange
+value,color,opacity,fillColor,fillOpacity,weight,label
+10,#cc9900,1.0,#cc9900,0.3,5,"10, Missouri Region"

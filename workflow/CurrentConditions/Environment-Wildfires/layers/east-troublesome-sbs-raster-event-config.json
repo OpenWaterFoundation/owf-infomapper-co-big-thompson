@@ -1,0 +1,12 @@
+{
+  "id" : "east-troublesome-sbs-raster-event-config",
+  "name": "Hover and click event handlers for east-troublesome-sbs-raster",
+  "description":  "Display only important user-understandable attributes.",
+  "layerAttributes" : {
+    "include" : [ "*" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id" : "stream-termini-event-config",
+  "name": "Instream reach termini event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "Name", "ISF_Type", "Status", "ID", "Case_Numbe", "cwcbCaseNm", "cwcbWDID", "cwcbSegID", "Comment" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

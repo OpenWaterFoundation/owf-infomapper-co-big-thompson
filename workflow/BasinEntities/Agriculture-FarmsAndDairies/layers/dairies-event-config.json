@@ -1,0 +1,12 @@
+{
+  "id" : "dairies-event-config",
+  "name": "Dairy event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "DairyName", "Physical_Address", "Municipality", "ZipCode", "Website" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

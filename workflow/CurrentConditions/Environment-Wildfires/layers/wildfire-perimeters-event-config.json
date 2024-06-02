@@ -1,0 +1,12 @@
+{
+  "id" : "wildfire-perimeters-event-config",
+  "name": "Hover and click event handlers active wildfire perimeters",
+  "description":  "Display only important user-understandable attributes.",
+  "layerAttributes" : {
+    "include" : [ "poly_IncidentName", "poly_MapMethod", "irwin_IncidentShortDescription", "poly_GISAcres", "poly_CreateDate", "poly_DateCurrent", "poly_PolygonDateTime" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

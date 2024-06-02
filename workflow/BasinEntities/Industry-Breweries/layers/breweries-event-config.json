@@ -1,0 +1,12 @@
+{
+  "id" : "breweries-event-config",
+  "name": "Brewery event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "BreweryName", "Physical_Address", "Municipality", "Website" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

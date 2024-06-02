@@ -1,0 +1,25 @@
+# Graduated classification table for SNODAS snowpack
+# - the value corresponds to SWE depth in inches
+# - use the same properties as the SNODAS tools but make transparent to work well with wildfires
+# - see: https://github.com/OpenWaterFoundation/owf-app-snodas-ng/blob/master/snodas-workspace/projects/snodas/src/app/main-content/map/map.component.ts
+#
+# The value from attribute is compared as follows to determine symbol:
+#  value > valueMin
+#  value <= valueMax
+valueMin,valueMax,color,opacity,fillColor,fillOpacity,weight
+-Infinity,<.02,#ffffff,0.0,#ffffff,0.35,1
+>=.02,<0.04,#eff3ff,0.0,#eff3ff,0.35,1
+>=.04,<0.2,#bdd7e7,0.0,#bdd7e7,0.35,1
+>=0.2,<0.4,#6baed6,0.0,#6baed6,0.35,1
+>=0.4,<1.0,#3182bd,0.0,#3182bd,0.35,1
+>=1.0,<2.0,#08519c,0.0,#08519c,0.35,1
+>=2.0,<4.0,#49006a,0.0,#49006a,0.35,1
+>=4.0,<6.0,#7a0177,0.0,#7a0177,0.35,1
+>=6.0,<10.0,#ae017e,0.0,#ae017e,0.35,1
+>=10.0,<20.0,#dd3497,0.0,#dd3497,0.35,1
+>=20.0,<30.0,#f768a1,0.0,#f768a1,0.35,1
+>=30.0,<40.0,#fa9fb5,0.0,#fa9fb5,0.35,1
+>=40.0,<80.0,#fcc5c0,0.0,#fcc5c0,0.35,1
+>=80.0,Infinity,#fde0dd,0.0,#fde0dd,0.35,1
+# Use black for NoData
+NoData,NoData,#000000,0.0,#000000,0.35,1

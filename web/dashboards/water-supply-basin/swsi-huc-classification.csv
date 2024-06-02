@@ -1,0 +1,14 @@
+# The value from attribute is compared as follows to determine symbol:
+#  value > valueMin
+#  value <= valueMax
+#  See the SWSI legend on the following map for the indicator basis:
+#    https://maps.dnrgis.state.co.us/dwr/Index.html?viewer=mapviewer
+valueMin,valueMax,color,opacity,fillColor,fillOpacity,weight,label,level
+-Infinity,<-4.2,#ffffff,0.0,#fffffff,1.00,1,Unknown,black
+>=-4.2,<-3.0,#fd0017,0.0,#fd0017,0.35,1,Extremely Dry,red
+>=-3.0,<-2.0,#fda824,0.0,#fda824,0.35,1,Moderately Dry,yellow
+>=-2.0,<-1.0,#fed283,0.0,#fed283,0.35,1,Slightly Dry,yellow
+>=-1.0,<1.0,#ffffc0,0.0,#ffffc0,0.35,1,Near Average,green
+>=1.0,<2.0,#d2e8fe,0.0,#d2e8fe,0.35,1,Slightly Wet,green
+>=2.0,<3.0,#f8e1fe,0.0,#f8e1fe,0.35,1,Moderately Wet,green
+>=3.0,Infinity,#1471fc,0.0,#1471fc,0.35,1,Extremely Wet,green

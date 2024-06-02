@@ -1,0 +1,12 @@
+{
+  "id" : "drought-event-config",
+  "name": "Hover and click event handlers for drought levels",
+  "description":  "Display only important user-understandable attributes.",
+  "layerAttributes" : {
+    "include" : [ "DM" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

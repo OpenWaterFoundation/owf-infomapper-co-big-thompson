@@ -1,0 +1,12 @@
+{
+  "id" : "roundtables-event-config",
+  "name": "Roundtables event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "Name", "Label", "BRT_Web", "CWCB_Web" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

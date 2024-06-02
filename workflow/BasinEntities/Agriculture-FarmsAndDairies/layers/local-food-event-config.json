@@ -1,0 +1,12 @@
+{
+  "id" : "local-food-event-config",
+  "name": "Local food event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "Organization", "OrganizationType", "Description", "Website" ],
+    "exclude" : [ ],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

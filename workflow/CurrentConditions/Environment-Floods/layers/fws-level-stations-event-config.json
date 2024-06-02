@@ -1,0 +1,13 @@
+{
+  "id" : "fws-level-stations-event-config",
+  "name": "Flood warning water level stations event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "xinclude" : [ "*" ],
+    "include" : [ "numId", "name", "outOfService", "stationTypeProtocol", "dashboardUrl", "WaterLevelRiver.1Day" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

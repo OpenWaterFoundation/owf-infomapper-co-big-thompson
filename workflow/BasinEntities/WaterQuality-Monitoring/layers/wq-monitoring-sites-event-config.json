@@ -1,0 +1,12 @@
+{
+  "id" : "wq-monitoring-sites-basin-event-config",
+  "name": "WQ monitoring sies event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "SITE", "SITE_DESCR", "SOURCE_NAM" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

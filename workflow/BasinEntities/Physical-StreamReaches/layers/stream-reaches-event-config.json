@@ -1,0 +1,12 @@
+{
+  "id" : "stream-reaches-event-config",
+  "name": "Stream reaches event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "GNIS_Name", "GNIS_ID", "District", "L_Miles" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

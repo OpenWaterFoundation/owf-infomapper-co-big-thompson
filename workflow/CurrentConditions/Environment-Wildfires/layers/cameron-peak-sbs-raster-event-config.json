@@ -1,0 +1,12 @@
+{
+  "id" : "cameron-peak-sbs-raster-event-config",
+  "name": "Hover and click event handlers for cameron-peak-sbs-raster",
+  "description":  "Display only important user-understandable attributes.",
+  "layerAttributes" : {
+    "include" : [ "*" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

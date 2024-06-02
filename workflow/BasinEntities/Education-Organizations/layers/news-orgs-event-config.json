@@ -1,0 +1,12 @@
+{
+  "id" : "news-orgs-event-config",
+  "name": "News organizations event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "Organization", "OrganizationType", "Website", "InBasin" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

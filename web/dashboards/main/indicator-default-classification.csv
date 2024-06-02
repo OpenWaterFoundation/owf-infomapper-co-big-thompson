@@ -1,0 +1,12 @@
+# This is the classification file for default indicator.
+# Green ok is always shown.
+#
+# The value from attribute is compared as follows to determine symbol:
+#  value > valueMin
+#  value <= valueMax
+#
+valueMin,valueMax,color,opacity,fillColor,fillOpacity,weight,label,level
+Missing,#ffffff,0.0,#fffffff,1.00,1,Unknown,white
+-Infinity,<10.0,#ffffff,0.0,#fffffff,1.00,1,low,green
+>=10.0,<25.0,#fd0017,0.0,#fd0017,0.35,1,medium,green
+>=25.0,Infinity,#1471fc,0.0,#1471fc,0.35,1,high,green

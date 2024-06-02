@@ -1,0 +1,12 @@
+{
+  "id" : "cameron-peak-sbs-event-config",
+  "name": "Hover and click event handlers for cameron-peak-sbs",
+  "description":  "Display only important user-understandable attributes.",
+  "layerAttributes" : {
+    "include" : [ "Severity", "gridcode" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

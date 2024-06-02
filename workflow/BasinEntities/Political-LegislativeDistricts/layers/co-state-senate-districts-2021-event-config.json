@@ -1,0 +1,12 @@
+{
+  "id" : "co-state-senate-districts-2021-event-config",
+  "name": "Senate districts event configuration",
+  "description":  "List main attributes.",
+  "layerAttributes" : {
+    "include" : [ "District" ],
+    "exclude" : [],
+    "formats": []
+  },
+  "actions": [
+  ]
+}

@@ -1,0 +1,12 @@
+# The value from attribute is compared as follows to determine symbol:
+#  value > valueMin
+#  value <= valueMax
+#
+# The streamflow indicator is percent of median daily flow.
+# Just use typical values for the basis.
+#
+valueMin,valueMax,color,opacity,fillColor,fillOpacity,weight,label,level
+Missing,#ffffff,0.0,#fffffff,1.00,1,Unknown,white
+-Infinity,<10.0,#ffffff,0.0,#fffffff,1.00,1,Very low flow,red
+>=10.0,<25.0,#fd0017,0.0,#fd0017,0.35,1,Low flow,yellow
+>=25.0,Infinity,#1471fc,0.0,#1471fc,0.35,1,Normal or wet,green

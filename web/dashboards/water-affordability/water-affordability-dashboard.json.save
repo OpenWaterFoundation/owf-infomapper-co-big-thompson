@@ -1,0 +1,133 @@
+{
+  "metadata": {
+     "author": "Steve Malers, Open Water Foundation",
+     "title": "Poudre Basin Water Affordability Dashboard",
+     "version": "1.0.0"
+  },
+  "layout": {
+     "columns": 5,
+     "backgroundColor": "black",
+     "gutterSize": 5
+  },
+  "widgets": [
+     {
+       "columns": 1,
+       "rows": 1,
+       "type": "selector",
+       "name": "Treated water provider",
+       "title": "Treated water provider",
+       "description": "Treated water provider",
+       "dataFormat": "csv",
+       "xgraphTemplatePath": "water-affordability-graph-example-template.json",
+       "dataPath": "treated-water-providers.csv",
+       "style": {
+          "backgroundColor": "black"
+       }
+     },
+     {
+       "columns": 1,
+       "rows": 1,
+       "type": "statusIndicator",
+       "name": "NewHouseTapCost",
+       "title": "New House Water Tap Cost",
+       "description": "Water cost for new tap."
+     },
+     {
+       "columns": 1,
+       "rows": 1,
+       "type": "statusIndicator",
+       "name": "MonthlyWaterCost",
+       "title": "Monthly Water Utility Cost",
+       "description": "Utility cost for water."
+     },
+     {
+       "columns": 1,
+       "rows": 1,
+       "type": "selector",
+       "name": "Raw water provider",
+       "title": "Raw water provider",
+       "description": "Raw water provider",
+       "dataFormat": "CSV",
+       "dataPath": "/dashboards/water-affordability/raw-water-providers.csv",
+       "style": {
+          "backgroundColor": "black"
+       }
+     },
+     {
+       "columns": 1,
+       "rows": 1,
+       "type": "statusIndicator",
+       "name": "RawWaterCost",
+       "title": "Raw Water Cost ($/ac-ft)",
+       "description": "Raw water cost ($/ac-ft)."
+     },
+     {
+       "columns": 1,
+       "rows": 1,
+       "type": "textMarkdown",
+       "name": "MunicipalityNotes",
+       "textPath": "treated-water-providers.md",
+       "style": {
+          "backgroundColor": "white"
+       }
+     },
+     {
+       "columns": 1,
+       "rows": 1,
+       "type": "statusIndicator",
+       "name": "NewHousePifCost",
+       "title": "New House PIF Cost",
+       "description": "Water cost for new house plant investment fee."
+     },
+     {
+       "columns": 1,
+       "rows": 1,
+       "type": "statusIndicator",
+       "name": "WaterProviderDedicationPolicy",
+       "title": "Dedication Policy",
+       "description": "Water dedication policy."
+     },
+     {
+       "columns": 1,
+       "rows": 1,
+       "type": "textMarkdown",
+       "name": "RawSupplyNotes",
+       "textPath": "raw-water-providers.md",
+       "style": {
+          "backgroundColor": "white"
+       }
+     },
+     {
+       "columns": 1,
+       "rows": 1,
+       "type": "statusIndicator",
+       "name": "MuniciplaOwnership",
+       "title": "Municipal Ownership (%)",
+       "description": "Municipal ownership."
+     },
+     {
+       "columns": 3,
+       "rows": 4,
+       "type": "chart",
+       "name": "Treated Water Cost",
+       "title": "Treated Water Cost",
+       "graphTemplatePath": "water-affordability-graph-example-template.json",
+       "description": "Treated water cost.",
+       "style": {
+          "backgroundColor": "lightgrey"
+       }
+     },
+     {
+       "columns": 2,
+       "rows": 4,
+       "type": "map",
+       "name": "Location map",
+       "mapConfigPath": "/data-maps/BasinEntities/Municipal-Municipalities/municipalities-map.json",
+       "title": "Location map",
+       "description": "Location map.",
+       "style": {
+          "backgroundColor": "lightgrey"
+       }
+     }
+  ]
+}
